@@ -1,9 +1,14 @@
-var express = require('express');
-var router = express.Router();
+var file1 = require(./file1);
+var file2 = require(./file2);
+var file3 = require(./file3);
 
-/* GET home page. */
-router.get('/', function(req, res, next) {
-  res.render('index');
-});
+module.exports = function (app) {
+    app.get('/', file1);
 
-module.exports = router;
+    app.post('/register', register.requestRegistration);
+
+    app.get('/users', authentication.users);
+    app.get('/users/:id', authentication.user);
+
+    app.get('*', error['404']);
+};
