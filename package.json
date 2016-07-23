@@ -15,7 +15,7 @@
   "bugs": {
     "url": "https://github.com/radiorodeo/photo-book/issues"
   },
-  "homepage": "https://github.com/radiorodeo/photo-book#readme",
+  "homepage": "https://gtithub.com/radiorodeo/photo-book#readme",
   "dependencies": {
     "body-parser": "^1.15.2",
     "cookie-parser": "^1.4.3",
@@ -28,5 +28,19 @@
     "express-session": "^1.14.0",
     "jade": "^1.11.0",
     "mongoose": "^4.5.5"
+  },
+  "devDependencies": {
+    "csscomb": "^3.1.8",
+    "gulp": "git+https://git@github.com/gulpjs/gulp.git#4.0",
+    "gulp-autoprefixer": "3.1.0",
+    "gulp-concat": "2.6.0",
+    "gulp-concat-css": "^2.2.0",
+    "gulp-csso": "^2.0.0",
+    "gulp-eslint": "2.0.0",
+    "gulp-load-plugins": "1.2.0",
+    "gulp-notify": "2.2.0",
+    "gulp-sass": "2.2.0",
+    "gulp-sourcemaps": "1.6.0",
+    "rimraf": "2.5.2"
   }
 }
