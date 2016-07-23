@@ -63,6 +63,7 @@ var AlbomsSchema = new Schema({
 //Фотографии
 var PhotosSchema = new Schema({
   albomId: ObjectId,
+  albomName: String,
   userId: ObjectId,
   title: {
     type: String,
@@ -79,7 +80,8 @@ var PhotosSchema = new Schema({
       text: String
     }
   ],
-  link: String
+  link: String,
+  date: Date
 });
 
 //Модели

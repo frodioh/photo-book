@@ -1,8 +1,8 @@
 {
   "db": {
-    "host": "127.0.0.1",
-    "port": "27017",
-    "name": "book",
+    "host": "ds013664.mlab.com",
+    "port": "13664",
+    "name": "photobook",
     "user": "admin",
     "password": "admin"
   },
