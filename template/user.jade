@@ -1,0 +1,221 @@
+doctype
+head
+  meta(charset='utf-8')
+  title Photo-book
+  meta(content='width=device-width, initial-scale=1' name='viewport')
+  link(rel="stylesheet", href="/css/main.css")
+  script(src='/js/foundation.js' defer)
+  script(src='/js/app.js' defer)
+body
+  .user-wrapper
+    .user-wrapper__content
+      header.user-header
+        .container
+          .user-card.user-card--user
+            .user-card__photo-wrapper
+              img(src="/img/default_avatar.jpg").user-card__photo
+            .user-card__info
+              .user-card__name Антон Черепов
+              .user-card__descr Я веб разработчик. Мне 24 года. Люблю путешествия, кодинг, фриланс и активный отдых.
+              .user-card__social
+                .user-card__social-icon
+                  include ../public/icons/soc_vk.svg
+                .user-card__social-icon
+                  include ../public/icons/soc_fb.svg
+                .user-card__social-icon
+                  include ../public/icons/soc_twitter.svg
+                .user-card__social-icon
+                  include ../public/icons/social_google.svg
+                .user-card__social-icon
+                  include ../public/icons/soc_email.svg
+          .photo-btns.photo-btns--user
+            button(type="button").photo-btn.photo-btn--user
+              .photo-btn__icon
+                include ../public/icons/edit.svg
+              .photo-btn__text Редактировать
+            button(type="button").photo-btn.photo-btn--user
+              .photo-btn__icon
+                include ../public/icons/off.svg
+              .photo-btn__text Выйти
+      .user-search
+        .container
+          form(method="get" action="/search")
+            input(type="text" placeholder="Исследовать мир").user-search__input
+      .new-photos
+        .container
+          h2.section-title Новое в мире
+          .photo-items
+            article.photo-item.photo-item--user
+              .photo-item__photo-wrapper
+              .photo-item__info
+                .photo-item__user
+                  img(src="/img/mini_avatar.jpg").photo-item__user-photo
+                .photo-item__descr
+                  .photo-item__title Путешествие на лодке по озеру
+                  .photo-item__social
+                    .photo-item__comments
+                      .photo-item__comments-icon
+                        include ../public/icons/comments.svg
+                      .photo-item__comments-text 9
+                    .photo-item__likes
+                      .photo-item__likes-icon
+                        include ../public/icons/like.svg
+                      .photo-item__likes-text 15
+              .photo-item__album
+                .photo-item__album-icon
+                  include ../public/icons/album.svg
+                .photo-item__album-text Прогулки по воде
+            article.photo-item.photo-item--user
+              .photo-item__photo-wrapper
+              .photo-item__info
+                .photo-item__user
+                  img(src="/img/mini_avatar.jpg").photo-item__user-photo
+                .photo-item__descr
+                  .photo-item__title Путешествие на лодке по озеру
+                  .photo-item__social
+                    .photo-item__comments
+                      .photo-item__comments-icon
+                        include ../public/icons/comments.svg
+                      .photo-item__comments-text 9
+                    .photo-item__likes
+                      .photo-item__likes-icon
+                        include ../public/icons/like.svg
+                      .photo-item__likes-text 15
+              .photo-item__album
+                .photo-item__album-icon
+                  include ../public/icons/album.svg
+                .photo-item__album-text Прогулки по воде
+            article.photo-item.photo-item--user
+              .photo-item__photo-wrapper
+              .photo-item__info
+                .photo-item__user
+                  img(src="/img/mini_avatar.jpg").photo-item__user-photo
+                .photo-item__descr
+                  .photo-item__title Путешествие на лодке по озеру
+                  .photo-item__social
+                    .photo-item__comments
+                      .photo-item__comments-icon
+                        include ../public/icons/comments.svg
+                      .photo-item__comments-text 9
+                    .photo-item__likes
+                      .photo-item__likes-icon
+                        include ../public/icons/like.svg
+                      .photo-item__likes-text 15
+              .photo-item__album
+                .photo-item__album-icon
+                  include ../public/icons/album.svg
+                .photo-item__album-text Прогулки по воде
+            article.photo-item.photo-item--user
+              .photo-item__photo-wrapper
+              .photo-item__info
+                .photo-item__user
+                  img(src="/img/mini_avatar.jpg").photo-item__user-photo
+                .photo-item__descr
+                  .photo-item__title Путешествие на лодке по озеру
+                  .photo-item__social
+                    .photo-item__comments
+                      .photo-item__comments-icon
+                        include ../public/icons/comments.svg
+                      .photo-item__comments-text 9
+                    .photo-item__likes
+                      .photo-item__likes-icon
+                        include ../public/icons/like.svg
+                      .photo-item__likes-text 15
+              .photo-item__album
+                .photo-item__album-icon
+                  include ../public/icons/album.svg
+                .photo-item__album-text Прогулки по воде
+            article.photo-item.photo-item--user
+              .photo-item__photo-wrapper
+              .photo-item__info
+                .photo-item__user
+                  img(src="/img/mini_avatar.jpg").photo-item__user-photo
+                .photo-item__descr
+                  .photo-item__title Путешествие на лодке по озеру
+                  .photo-item__social
+                    .photo-item__comments
+                      .photo-item__comments-icon
+                        include ../public/icons/comments.svg
+                      .photo-item__comments-text 9
+                    .photo-item__likes
+                      .photo-item__likes-icon
+                        include ../public/icons/like.svg
+                      .photo-item__likes-text 15
+              .photo-item__album
+                .photo-item__album-icon
+                  include ../public/icons/album.svg
+                .photo-item__album-text Прогулки по воде
+            article.photo-item.photo-item--user
+              .photo-item__photo-wrapper
+              .photo-item__info
+                .photo-item__user
+                  img(src="/img/mini_avatar.jpg").photo-item__user-photo
+                .photo-item__descr
+                  .photo-item__title Путешествие на лодке по озеру
+                  .photo-item__social
+                    .photo-item__comments
+                      .photo-item__comments-icon
+                        include ../public/icons/comments.svg
+                      .photo-item__comments-text 9
+                    .photo-item__likes
+                      .photo-item__likes-icon
+                        include ../public/icons/like.svg
+                      .photo-item__likes-text 15
+              .photo-item__album
+                .photo-item__album-icon
+                  include ../public/icons/album.svg
+                .photo-item__album-text Прогулки по воде
+      .my-alboms
+        .container
+          h2.section-title Мои альбомы
+          .albom-items
+            article.album-item.album-item--user
+              .album-item__photo-wrapper.album-item__photo-wrapper--user
+                img(src="/img/album_item.jpg").album-item__photo
+              .album-item__info
+                .album-item__edit
+                  include ../public/icons/edit.svg
+                .album-item__title Поход в горы
+            article.album-item.album-item--user
+              .album-item__photo-wrapper.album-item__photo-wrapper--user
+                img(src="/img/album_item.jpg").album-item__photo
+              .album-item__info
+                .album-item__edit
+                  include ../public/icons/edit.svg
+                .album-item__title Поход в горы
+            article.album-item.album-item--user
+              .album-item__photo-wrapper.album-item__photo-wrapper--user
+                img(src="/img/album_item.jpg").album-item__photo
+              .album-item__info
+                .album-item__edit
+                  include ../public/icons/edit.svg
+                .album-item__title Поход в горы
+            article.album-item.album-item--user
+              .album-item__photo-wrapper.album-item__photo-wrapper--user
+                img(src="/img/album_item.jpg").album-item__photo
+              .album-item__info
+                .album-item__edit
+                  include ../public/icons/edit.svg
+                .album-item__title Поход в горы
+            article.album-item.album-item--user
+              .album-item__photo-wrapper.album-item__photo-wrapper--user
+                img(src="/img/album_item.jpg").album-item__photo
+              .album-item__info
+                .album-item__edit
+                  include ../public/icons/edit.svg
+                .album-item__title Поход в горы
+            article.album-item.album-item--user
+              .album-item__photo-wrapper.album-item__photo-wrapper--user
+                img(src="/img/album_item.jpg").album-item__photo
+              .album-item__info
+                .album-item__edit
+                  include ../public/icons/edit.svg
+                .album-item__title Поход в горы
+    footer.user-footer
+      .container
+        .user-footer__promo.
+          Перед вами сервис, который поможет вам организовать свои фотографии в альбомы и поделиться ими со всем миром!
+        .user-footer__link-top
+          include ../public/icons/top.svg
+        .user-footer__copyright.
+          2016 / Создано командой профессионалов на продвинутом курсе по веб разработке от LoftSchool

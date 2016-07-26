@@ -1,0 +1,52 @@
+.my-alboms .container {
+  display: flex;
+  flex-direction: column;
+}
+
+.album-item {
+  display: flex;
+  flex-direction: column;
+}
+
+.album-item__photo-wrapper {
+  overflow: hidden;
+  position: relative;
+  height: 280px;
+}
+
+.album-item__photo {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
+  max-width: 100%;
+}
+
+.album-item__info {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 17px 20px 15px;
+}
+
+.album-item__edit {
+  width: 20px;
+  height: 20px;
+  & svg {
+    width: 100%;
+  }
+}
+
+.albom-items {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.album-item--user {
+  width: 280px;
+}
+
+.album-item__photo-wrapper--user {
+  height: 280px;
+}

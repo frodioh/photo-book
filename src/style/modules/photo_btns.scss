@@ -1,0 +1,54 @@
+.photo-btns {
+  display: flex;
+  flex-grow: 1;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.photo-btn {
+  background: #fff;
+  padding: 10px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  transition: all 1s;
+  border-radius: 30px;
+  border: 0;
+  color: #fff;
+  margin-bottom: 10px;
+}
+
+.photo-btn__icon {
+  width: 22px;
+  height: 22px;
+  overflow: hidden;
+  position: relative;
+  & svg {
+    position: absolute;
+    height: 100%;
+    left: 50%;
+    top: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    fill: #a0a09f;
+  }
+}
+
+.photo-btn__text {
+  overflow: hidden;
+  width: 0;
+}
+
+.photo-btn:hover {
+  background: #28bbf0;
+}
+
+.photo-btn:hover .photo-btn__text {
+  width: auto;
+}
+
+.photo-btn:hover .photo-btn__icon {
+  margin-right: 10px;
+  & svg {
+    fill: #fff;
+  }
+}

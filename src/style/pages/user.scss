@@ -1,0 +1,137 @@
+.user-wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.user-wrapper__content {
+  flex-grow: 1;
+}
+
+.user-footer {
+  padding: 15px 0;
+  align-items: flex-start;
+  background: url(../img/default_bg.jpg) no-repeat center bottom;
+  background-size: cover;
+  & .container {
+    justify-content: space-between;
+  }
+}
+
+.user-footer__link-top {
+  width: 28px;
+  height: 23px;
+}
+
+.user-footer__promo {
+  width: 455px;
+}
+
+.user-footer__copyright {
+  width: 480px;
+  text-align: right;
+}
+
+.user-header {
+  padding: 20px 0 55px 0;
+  & .container {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+}
+
+.section-title {
+  font: bold 42px 'Panton', Arial, sans-serif;
+}
+
+.user-card--user {
+  padding-left: 15px;
+}
+
+.user-header {
+  background: url(../img/default_bg.jpg) no-repeat top center;
+  background-size: 100%;
+}
+
+.user-search {
+  background: #dbdcdc;
+  padding: 10px;
+}
+
+.user-search .container {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.user-search__input {
+  padding: 10px 45px;
+  border: none;
+  border-radius: 20px;
+  outline: none;
+  background: #fff url(../icons/search.svg) no-repeat 20px 50%;
+  color: #323232;
+  font: 300 1rem 'Proxima Nova', Arial, sans-serif;
+}
+
+.new-photos {
+  padding: 60px 0;
+}
+
+.new-photos .container {
+  flex-wrap: wrap;
+  flex-direction: column;
+}
+
+.section-title {
+  font: bold 2.62rem 'Panton', Arial, sans-serif;
+  color: #323232;
+  margin-bottom: 40px;
+}
+
+.photo-items {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.photo-item--user {
+  width: 380px;
+  margin-bottom: 20px;
+}
+
+.photo-item--user:nth-child(3n) {
+  margin-right: 0;
+}
+
+.photo-item--user:nth-last-child(3),
+.photo-item--user:nth-last-child(2),
+.photo-item--user:nth-last-child(1) {
+  margin-bottom: 0;
+}
+
+.photo-item__photo-wrapper {
+  height: 250px;
+  width: 380px;
+  background-image: url(../img/album_item.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.photo-item__user {
+  margin-right: 20px;
+}
+
+.photo-item__album {
+  background: #f6f6f6;
+}
+
+.photo-item__album-icon {
+  margin-right: 10px;
+  & svg {
+    fill: #c5c5c5;
+  }
+}
+
+.my-alboms {
+  background: #f6f6f6;
+}
