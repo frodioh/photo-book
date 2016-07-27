@@ -14,14 +14,6 @@
   height: 280px;
 }
 
-.album-item__photo {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translateX(-50%) translateY(-50%);
-  max-width: 100%;
-}
-
 .album-item__info {
   display: flex;
   flex-direction: row;
@@ -39,14 +31,10 @@
 
 .albom-items {
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
   flex-wrap: wrap;
 }
 
 .album-item--user {
   width: 280px;
-}
-
-.album-item__photo-wrapper--user {
-  height: 280px;
 }

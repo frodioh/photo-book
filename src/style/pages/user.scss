@@ -1,10 +1,40 @@
 .user-wrapper {
   display: flex;
   flex-direction: column;
+  position: relative;
 }
 
 .user-wrapper__content {
   flex-grow: 1;
+}
+
+.edit-header {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 10;
+}
+
+.edit-header__top {
+  padding: 20px 0 55px 0;
+  & .container {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+}
+
+.edit-header__btns {
+
+}
+
+.hidden {
+  flex-grow: 1;
+  background: rgba(255,255,255,.5);
 }
 
 .user-footer {
@@ -33,6 +63,8 @@
 
 .user-header {
   padding: 20px 0 55px 0;
+  background: url(../img/default_bg.jpg) no-repeat top center;
+  background-size: 100%;
   & .container {
     flex-direction: row;
     justify-content: space-between;
@@ -46,11 +78,6 @@
 
 .user-card--user {
   padding-left: 15px;
-}
-
-.user-header {
-  background: url(../img/default_bg.jpg) no-repeat top center;
-  background-size: 100%;
 }
 
 .user-search {
@@ -88,6 +115,25 @@
   margin-bottom: 40px;
 }
 
+.photo-btn {
+  cursor: pointer;
+  outline: none;
+}
+
+.photo-btn--album {
+  position: absolute;
+  top: -65px;
+  right: -20px;
+}
+
+.photo-btn--album:hover .photo-btn__icon {
+  margin-right: 0;
+}
+
+.photo-btn--album:hover {
+  background: #fff;
+}
+
 .photo-items {
   display: flex;
   flex-wrap: wrap;
@@ -97,6 +143,9 @@
 .photo-item--user {
   width: 380px;
   margin-bottom: 20px;
+  box-shadow: 0 0 4px 1px rgba(0,0,0,.15);
+  border-radius: 3px;
+  overflow: hidden;
 }
 
 .photo-item--user:nth-child(3n) {
@@ -106,23 +155,86 @@
 .photo-item--user:nth-last-child(3),
 .photo-item--user:nth-last-child(2),
 .photo-item--user:nth-last-child(1) {
-  margin-bottom: 0;
+  margin-bottom: 22px;
 }
 
-.photo-item__photo-wrapper {
+.photo-item__photo {
   height: 250px;
   width: 380px;
   background-image: url(../img/album_item.jpg);
   background-repeat: no-repeat;
   background-size: cover;
+  display: flex;
+  position: relative;
+}
+
+.photo-item__photo:hover {
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    background: rgba(0,0,0,.3);
+    z-index: 5;
+  }
+  &::after {
+    content: '';
+    display: flex;
+    width: 50px;
+    height: 50px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    z-index: 6;
+    transform: translateX(-50%) translateY(-50%);
+    background: url(../icons/loupe.svg) no-repeat 0 0;
+  }
 }
 
 .photo-item__user {
   margin-right: 20px;
+  display: flex;
+  position: relative;
+  overflow: hidden;
+}
+
+.photo-item__user:hover {
+  &::before {
+    content: '';
+    width: 50px;
+    height: 50px;
+    position: absolute;
+    display: flex;
+    background: rgba(0,0,0,.3);
+    z-index: 5;
+  }
+  &::after {
+    content: '';
+    display: flex;
+    width: 20px;
+    height: 5px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    z-index: 6;
+    transform: translateX(-50%) translateY(-50%);
+    background: url(../icons/more.svg) no-repeat 0 0;
+  }
 }
 
 .photo-item__album {
   background: #f6f6f6;
+  font: 600 1rem 'Proxima Nova', Arial, sans-serif;
+  text-decoration: none;
+  color: #323232;
+}
+
+.photo-item__title {
+  text-decoration: none;
+  color: #323232;
 }
 
 .photo-item__album-icon {
@@ -132,6 +244,149 @@
   }
 }
 
+.photo-loader {
+  color: #28bbf0;
+  font: bold .88rem 'Panton', Arial, sans-serif;
+  padding: 12px 20px;
+  border: 1px solid #28bbf0;
+  align-self: center;
+  border-radius: 25px;
+  text-decoration: none;
+}
+
 .my-alboms {
   background: #f6f6f6;
+}
+
+.my-alboms .container {
+  padding-bottom: 40px;
+}
+
+.albom-items {
+  position: relative;
+}
+
+.album-item__title {
+  text-decoration: none;
+  font: 600 1rem 'Proxima Nova', Arial, sans-serif;
+  color: #323232;
+}
+
+.album-item__edit svg path {
+  fill: #d6d6d6;
+}
+
+.album-item__edit:hover svg path {
+  fill: #848484;
+}
+
+.album-item--user {
+  border-radius: 3px;
+  overflow: hidden;
+  margin-bottom: 20px;
+  margin-right: 20px;
+  box-shadow: 0 0 4px 1px rgba(0,0,0,.15);
+}
+
+.album-item--user:nth-of-type(4n) {
+  margin-right: 0;
+}
+
+.album-item__photo {
+  width: 280px;
+  height: 280px;
+  background-image: url(../img/album_item.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+}
+
+.album-item__edit {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  outline: none;
+}
+
+.album-item__edit svg {
+  fill: #848484;
+}
+
+.user-footer__promo {
+  font: 300 1rem 'Proxima Nova', Arial, sans-serif;
+  color: #fff;
+}
+
+.user-footer__copyright {
+  color: rgba(255,255,255,.4);
+}
+
+.edit-header__top {
+  display: flex;
+  width: 92%;
+  max-width: 1180px;
+  margin: 0 auto;
+}
+
+.user-edit_input-avatar {
+  display: none;
+}
+
+.user-edit {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.user-edit__info {
+  width: 655px;
+  display: flex;
+  flex-direction: row;
+  padding-left: 15px;
+}
+
+.user-edit__avatar-wrapper {
+  position: relative;
+  display: flex;
+  border-radius: 50%;
+  width: 128px;
+  height: 128px;
+  border: 3px solid #fff;
+  overflow: hidden;
+  margin-right: 45px;
+  &::after {
+    content: 'Изменить фото';
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0,0,0,.3) url(../icons/cam.svg) no-repeat 50% 30%;
+    padding-top: 20px;
+  }
+}
+
+.user-edit__avatar {
+  max-width: 100%;
+}
+
+.user-edit__descr {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.user-edit__name,
+.user-edit__caption {
+  flex-grow: 1;
+  padding: 10px 20px;
+  margin-bottom: 10px;
+  border: none;
+  outline: none;
+  border-radius: 20px;
 }
