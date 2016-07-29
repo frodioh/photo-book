@@ -46,6 +46,9 @@ window.onload = function() {
           body: JSON.stringify(registerInfo)
         };
         fetch('/register', myInit).then(function(res) {
+          return res.json();
+        }).then(function(data) {
+
         });
       });
     }());
@@ -60,19 +63,15 @@ window.onload = function() {
           "email": loginEmail.value,
           "password": loginPass.value
         };
-        //Настройки для fetch
-        myHeaders = new Headers({
-          "Content-Type": "application/json"
-        });
-        var myInit = { 
+        var authInfo = JSON.stringify(authInfo);
+        $.ajax({
+          url: '/auth',
           method: 'POST',
-          headers: myHeaders,
-          mode: 'cors',
-          cache: 'default',
-          redirect: 'follow',
-          body: JSON.stringify(authInfo)
-        };
-        fetch('/auth', myInit).then(function(res) {
+          contentType: 'application/json',
+          data: authInfo,
+          success: function(){
+            location = '/user';
+          }
         });
       });
     }());

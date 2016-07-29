@@ -3,6 +3,7 @@ var jade = require('jade');
 var express = require('express');
 var crypto = require('crypto');
 var path = require('path');
+var fs = require('fs');
 var bodyParser = require('body-parser');
 var cookieParser = require("cookie-parser");
 //Конфиг
@@ -76,6 +77,11 @@ app.post('/register', function(req, res) {
           res.json({isValid: false});
         }
         else {
+          var userDir = path.resolve('./media/' + doc._id);
+          console.log(userDir);
+          if (!fs.existsSync(userDir)) {
+            fs.mkdirSync(userDir);
+          }
           res.redirect('/login');
         }
       });
