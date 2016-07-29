@@ -1,7 +1,7 @@
 var mongoose = require('mongoose');
 var crypto = require('crypto');
 var Schema = mongoose.Schema;
-var ObjectId = mongoose.Schema.Types.ObjectId;
+var ObjectId = mongoose.Schema.ObjectId;
 
 //Схемы
 //Пользователи
@@ -54,9 +54,7 @@ var AlbomsSchema = new Schema({
   userId: ObjectId,
   title: String,
   description: String,
-  photos: [
-    photoId: ObjectId
-  ],
+  photos: [ObjectId],
   thumb: ObjectId,
   date: Date
 });

@@ -2,21 +2,21 @@
 var express = require('express');
 var router = express.Router();
 //Подключение к базе
-var mongoose = require('./mongoose');
+var mongoose = require('../connection');
 //Модели
-var User = require('./models').user;
-var Albom = require('./models').albom;
-var Photo = require('./models').photo;
+var User = require('../models').user;
+var Albom = require('../models').albom;
+var Photo = require('../models').photo;
 
 router.get('/:query', function(req, res) {
   var session = req.session;
   var query = req.params.query;
   var pattern = new RegExp(query, 'i');
   var information = {};
-  User.findOne({_id.str: session.id}, function(err, user) {
+  User.findOne({_id: session.id}, function(err, user) {
     if(user) {
       information.user = user;
-      Photo.find($or: [{title: pattern}, {description: pattern}], function(err, photos) {
+      Photo.find({$or: [{title: pattern}, {description: pattern}]}, function(err, photos) {
         if(photos) {
           information.photos = photos;
           information.albums = [];
@@ -33,7 +33,7 @@ router.get('/:query', function(req, res) {
             }
             ownerIds.push(ownerIdItem);
           }
-          User.find($or: ownerIds, function(err, owners) {
+          User.find({$or: ownerIds}, function(err, owners) {
             if(owners) {
               information.owners = owners;
               res.render('search', information);

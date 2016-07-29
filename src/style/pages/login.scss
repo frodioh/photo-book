@@ -1,0 +1,234 @@
+.login-wrapper {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: url(../img/login-bg.jpg) no-repeat 0 0/cover;
+}
+
+.login-content {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 550px;
+  perspective: 900px;
+}
+
+.login-footer {
+  padding: 20px 0;
+  font: 300 1rem 'Proxima Nova', Arial, sans-serif;
+  color: #fff;
+}
+
+.login-content__header {
+  font: bold 2.62rem 'Panton', Arial, sans-serif;
+  color: #fff;
+  margin-bottom: 15px;
+}
+
+.login-content__caption {
+  margin: 0;
+  margin-bottom: 35px;
+  font: 300 rem 'Proxima Nova', Arial, sans-serif;
+  color: #fff;
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: #fff;
+  overflow: hidden;
+  border-radius: 25px;
+  width: 280px;
+  padding-bottom: 15px;
+  z-index: 2;
+  transform: rotateY(0deg);
+}
+
+.login-form, .register-form {
+  backface-visibility: hidden;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.login-form__email,
+.login-form__pass {
+  position: relative;
+  border: none;
+  border-bottom: 1px solid #ccc;
+  outline: none;
+  padding: 10px 20px;
+  padding-left: 45px;
+  width: 100%;
+  font: 300 1rem 'Proxima Nova', Arial, sans-serif;
+  color: #323232;
+}
+
+.login-form__email {
+  background: url(../icons/envelope.svg) no-repeat 20px 50%;
+}
+
+.login-form__pass {
+  background: url(../icons/password.svg) no-repeat 20px 50%;
+}
+
+.login-form__pass {
+  margin-bottom: 10px;
+}
+
+.login-form__forgot-link {
+  font: 600 .88rem 'Proxima Nova', Arial, sans-serif;
+  color: #28bbf0;
+  text-decoration: none;
+  margin-bottom: 15px;
+  align-self: flex-start;
+  padding-left: 20px;
+}
+
+.login-form__login-btn {
+  width: 240px;
+  padding: 12px 0;
+  margin-bottom: 5px;
+  text-align: center;
+  border: none;
+  outline: none;
+  border-radius: 20px;
+  font: bold .88rem 'Panton', Arial, sans-serif;
+  color: #fff;
+  cursor: pointer;
+  background: #28bbf0;
+}
+
+.login-form__sign-up {
+  font: 300 .88rem 'Proxima Nova', Arial, sans-serif;
+  color: #323232;
+}
+
+.login-form__sign-up-link {
+  font: 600 .88rem 'Proxima Nova', Arial, sans-serif;
+  color: #28bbf0;
+  text-decoration: none;
+}
+
+.flipper {
+  transform-style: preserve-3d;
+  transition: transform .6s;
+  position: relative;
+  width: 280px;
+  height: 200px;
+  &.active {
+    transform: rotateY(-180deg);
+  }
+}
+
+.register-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: #fff;
+  overflow: hidden;
+  border-radius: 25px;
+  width: 280px;
+  padding-bottom: 15px;
+  transform: rotateY(180deg);
+}
+
+.headers {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.headers__login {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 550px;
+  opacity: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  &.active {
+    position: relative;
+    opacity: 1;
+  }
+}
+
+.headers__register {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 550px;
+  opacity: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  &.active {
+    position: relative;
+    opacity: 1;
+  }
+}
+
+.register-form__name,
+.register-form__email,
+.register-form__pass {
+  position: relative;
+  border: none;
+  border-bottom: 1px solid #ccc;
+  outline: none;
+  padding: 10px 20px;
+  padding-left: 45px;
+  width: 100%;
+  font: 300 1rem 'Proxima Nova', Arial, sans-serif;
+  color: #323232;
+}
+
+.register-form__pass {
+  background: url(../icons/password.svg) no-repeat 20px 50%;
+  margin-bottom: 10px;
+}
+
+.register-form__email {
+  background: url(../icons/envelope.svg) no-repeat 20px 50%;
+}
+
+.register-form__name {
+  background: url(../icons/name.svg) no-repeat 20px 50%;
+}
+
+.register-create-btn {
+  width: 240px;
+  padding: 12px 0;
+  margin-bottom: 5px;
+  text-align: center;
+  border: none;
+  outline: none;
+  border-radius: 20px;
+  font: bold .88rem 'Panton', Arial, sans-serif;
+  color: #fff;
+  cursor: pointer;
+  background: #28bbf0;
+}
+
+.register-form__notice {
+  font: 300 .88rem 'Proxima Nova', Arial, sans-serif;
+  color: #323232;
+  text-align: left;
+  padding-left: 20px;
+  margin-bottom: 20px;
+}
+
+.register-form__sign-in {
+  text-align: left;
+}
+
+.register-form__sign-in-link {
+  font: 600 .88rem 'Proxima Nova', Arial, sans-serif;
+  color: #28bbf0;
+  text-decoration: none;
+}

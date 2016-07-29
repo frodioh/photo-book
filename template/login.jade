@@ -1,0 +1,36 @@
+doctype
+head
+  meta(charset='utf-8')
+  title Photo-book
+  meta(content='width=device-width, initial-scale=1' name='viewport')
+  link(rel="stylesheet", href="/css/main.css")
+  script(src='/js/foundation.js' defer)
+  script(src='/js/app.js' defer)
+body
+  .login-wrapper
+    .login-content
+      .headers
+        .headers__login.active
+          h1.login-content__header Добро пожаловать
+          p.login-content__caption Перед вами сервис, который поможет вам организовать свои фотографии в альбомы и поделиться ими со всем миром!
+        .headers__register
+          h1.login-content__header Регистрация
+      .flipper
+        form(method="post" action="/auth").login-form
+          input(type="text" placeholder="Электронная почта")#loginEmail.login-form__email
+          input(type="password" placeholder="Пароль")#loginPass.login-form__pass
+          a(href="#").login-form__forgot-link Забыли пароль?
+          button(type="button").login-form__login-btn Войти
+          .login-form__sign-up
+            |Нет аккаунта? 
+            a(href="#")#loginSignUpLink.login-form__sign-up-link Зарегестрироваться
+        form(method="post" action="/register").register-form
+          input(type="text" placeholder="Имя")#registerName.register-form__name
+          input(type="email" placeholder="Электронная почта")#registerEmail.register-form__email
+          input(type="password" placeholder="Пароль")#registerPass.register-form__pass
+          p.register-form__notice Ваши данные остаются строго конфеденциальны
+          button(type="button").register-create-btn Создать аккаунт
+          .register-form__sign-in
+            |Уже зарегестрированы? 
+            a(href="#")#registerSignInLink.register-form__sign-in-link  Войти
+    footer.login-footer 2016 Создано командой профессионалов на продвинутом курсе по веб-разработке от Loftschool

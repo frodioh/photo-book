@@ -2,19 +2,19 @@
 var express = require('express');
 var router = express.Router();
 //Подключение к базе
-var mongoose = require('./mongoose');
+var mongoose = require('../connection');
 //Модели
-var User = require('./models').user;
-var Albom = require('./models').albom;
-var Photo = require('./models').photo;
+var User = require('../models').user;
+var Albom = require('../models').albom;
+var Photo = require('../models').photo;
 
 router.get('/:id', function(req, res) {
   var id = req.params.id;
   var pattern = new RegExp('^('+id+')', 'i');
   var session = req.session;
-  User.findOne({_id.str: session.id}, function(err, doc) {
+  User.findOne({_id: session.id}, function(err, doc) {
     if (doc) {
-      Album.findOne({_id.str: pattern}, function(err, album) {
+      Album.findOne({_id: pattern}, function(err, album) {
         if(album) {
           var information = {
             albomInfo: album

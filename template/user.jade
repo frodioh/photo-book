@@ -12,52 +12,78 @@ body
       .edit-header__top
         .user-edit
           .user-edit__info
-            input(type="file" id="avatar").user-edit_input-avatar
-            label(for="avatar").user-edit__avatar-wrapper
-              img(src="/img/default_avatar.jpg").user-edit__avatar
+            input(type="file" id="editHeaderAvatar").user-edit__input-avatar
+            label(for="editHeaderAvatar").user-edit__avatar-wrapper
+              .user-edit__avatar-caption Изменить фото
+              img(src="#{userInfo.photoLink}").user-edit__avatar
             .user-edit__descr
-              input(type="text" value="Антон Черепов").user-edit__name
-              textarea(type="text").user-edit__caption Я веб разработчик. Мне 24 года.
-              .user-card__social
-                .user-card__social-icon
+              input(type="text" value="#{userInfo.name}").user-edit__name
+              textarea(type="text").user-edit__caption=userInfo.info
+                .user-card__social-icon.active
                   include ../public/icons/soc_vk.svg
+                  .user-card__social-edit
+                    input(type="text" value="#{userInfo.social.vk}")#vkTextSocial.user-card__social-text
+                    button(type="button")#saveSocial.social-btn.social-btn--save Сохранить
+                    button(type="button")#canselSocial.social-btn.social-btn--cansel Отменить
                 .user-card__social-icon
                   include ../public/icons/soc_fb.svg
+                  .user-card__social-edit
+                    input(type="text" value="#{userInfo.social.fb}")#fbTextSocial.user-card__social-text
+                    button(type="button")#saveSocial.social-btn.social-btn--save Сохранить
+                    button(type="button")#canselSocial.social-btn.social-btn--cansel Отменить
                 .user-card__social-icon
                   include ../public/icons/soc_twitter.svg
+                  .user-card__social-edit
+                    input(type="text" value="#{userInfo.social.twitter}")#twitterTextSocial.user-card__social-text
+                    button(type="button")#saveSocial.social-btn.social-btn--save Сохранить
+                    button(type="button")#canselSocial.social-btn.social-btn--cansel Отменить
                 .user-card__social-icon
                   include ../public/icons/social_google.svg
+                  .user-card__social-edit
+                    input(type="text" value="#{userInfo.social.googlePlus}")#googleTextSocial.user-card__social-text
+                    button(type="button")#saveSocial.social-btn.social-btn--save Сохранить
+                    button(type="button")#canselSocial.social-btn.social-btn--cansel Отменить
                 .user-card__social-icon
                   include ../public/icons/soc_email.svg
-          .user-edit__bg
-      .edit-header__btns
+                  .user-card__social-edit
+                    input(type="text" value="#{userInfo.social.email}")#emailTextSocial.user-card__social-text
+                    button(type="button")#saveSocial.social-btn.social-btn--save Сохранить
+                    button(type="button")#canselSocial.social-btn.social-btn--cansel Отменить
+          input(type="file" id="editHeaderBg").user-edit__bg-input
+          label(for="editHeaderBg").user-edit__bg
+            .user-edit__bg-wrapper
+              include ../public/icons/cam.svg
+            .user-edit__bg-text Изменить фон
       .hidden
+        .container
+          button(type="button")#editHeaderBtnCancel.edit-header-btn.edit-header-btn--cansel Отменить
+          button(type="button")#editHeaderBtnSave.edit-header-btn.edit-header-btn--save Сохранить
     .user-wrapper__content
       header.user-header
         .container
           .user-card.user-card--user
             .user-card__photo-wrapper
-              img(src="/img/default_avatar.jpg").user-card__photo
+              img(src="#{userInfo.photoLink}").user-card__photo
             .user-card__info
-              .user-card__name Антон Черепов
-              .user-card__descr Я веб разработчик. Мне 24 года. Люблю путешествия, кодинг, фриланс и активный отдых.
+              .user-card__name #{userInfo.name}
+              .user-card__descr #{userInfo.info}
               .user-card__social
-                .user-card__social-icon
+                a(href="#{userInfo.social.vk}").user-card__social-icon
                   include ../public/icons/soc_vk.svg
-                .user-card__social-icon
+                a(href="#{userInfo.social.fb}").user-card__social-icon
                   include ../public/icons/soc_fb.svg
-                .user-card__social-icon
+                a(href="#{userInfo.social.twitter}").user-card__social-icon
                   include ../public/icons/soc_twitter.svg
-                .user-card__social-icon
+                a(href="#{userInfo.social.googlePlus}").user-card__social-icon
                   include ../public/icons/social_google.svg
-                .user-card__social-icon
+                a(href="#{userInfo.social.email}").user-card__social-icon
                   include ../public/icons/soc_email.svg
           .photo-btns.photo-btns--user
-            button(type="button").photo-btn.photo-btn--user
+            button(type="button")#userEditBtn.photo-btn.photo-btn--user
               .photo-btn__icon
                 include ../public/icons/edit.svg
               .photo-btn__text Редактировать
-            button(type="button").photo-btn.photo-btn--user
+            button(type="button")#userOffBtn.photo-btn.photo-btn--user
               .photo-btn__icon
                 include ../public/icons/off.svg
               .photo-btn__text Выйти
@@ -69,126 +95,27 @@ body
         .container
           h2.section-title Новое в мире
           .photo-items
-            article.photo-item.photo-item--user
-              a(href="#").photo-item__photo
-              .photo-item__info
-                a(href="#").photo-item__user
-                  img(src="/img/mini_avatar.jpg").photo-item__user-photo
-                .photo-item__descr
-                  a(href="#").photo-item__title Путешествие на лодке по озеру
-                  .photo-item__social
-                    .photo-item__comments
-                      .photo-item__comments-icon
-                        include ../public/icons/comments.svg
-                      .photo-item__comments-text 9
-                    .photo-item__likes
-                      .photo-item__likes-icon
-                        include ../public/icons/like.svg
-                      .photo-item__likes-text 15
-              a(href="#").photo-item__album
-                .photo-item__album-icon
-                  include ../public/icons/album.svg
-                .photo-item__album-text Прогулки по воде
-            article.photo-item.photo-item--user
-              a(href="#").photo-item__photo
-              .photo-item__info
-                a(href="#").photo-item__user
-                  img(src="/img/mini_avatar.jpg").photo-item__user-photo
-                .photo-item__descr
-                  a(href="#").photo-item__title Путешествие на лодке по озеру
-                  .photo-item__social
-                    .photo-item__comments
-                      .photo-item__comments-icon
-                        include ../public/icons/comments.svg
-                      .photo-item__comments-text 9
-                    .photo-item__likes
-                      .photo-item__likes-icon
-                        include ../public/icons/like.svg
-                      .photo-item__likes-text 15
-              a(href="#").photo-item__album
-                .photo-item__album-icon
-                  include ../public/icons/album.svg
-                .photo-item__album-text Прогулки по воде
-            article.photo-item.photo-item--user
-              a(href="#").photo-item__photo
-              .photo-item__info
-                a(href="#").photo-item__user
-                  img(src="/img/mini_avatar.jpg").photo-item__user-photo
-                .photo-item__descr
-                  a(href="#").photo-item__title Путешествие на лодке по озеру
-                  .photo-item__social
-                    .photo-item__comments
-                      .photo-item__comments-icon
-                        include ../public/icons/comments.svg
-                      .photo-item__comments-text 9
-                    .photo-item__likes
-                      .photo-item__likes-icon
-                        include ../public/icons/like.svg
-                      .photo-item__likes-text 15
-              a(href="#").photo-item__album
-                .photo-item__album-icon
-                  include ../public/icons/album.svg
-                .photo-item__album-text Прогулки по воде
-            article.photo-item.photo-item--user
-              a(href="#").photo-item__photo
-              .photo-item__info
-                a(href="#").photo-item__user
-                  img(src="/img/mini_avatar.jpg").photo-item__user-photo
-                .photo-item__descr
-                  a(href="#").photo-item__title Путешествие на лодке по озеру
-                  .photo-item__social
-                    .photo-item__comments
-                      .photo-item__comments-icon
-                        include ../public/icons/comments.svg
-                      .photo-item__comments-text 9
-                    .photo-item__likes
-                      .photo-item__likes-icon
-                        include ../public/icons/like.svg
-                      .photo-item__likes-text 15
-              a(href="#").photo-item__album
-                .photo-item__album-icon
-                  include ../public/icons/album.svg
-                .photo-item__album-text Прогулки по воде
-            article.photo-item.photo-item--user
-              a(href="#").photo-item__photo
-              .photo-item__info
-                a(href="#").photo-item__user
-                  img(src="/img/mini_avatar.jpg").photo-item__user-photo
-                .photo-item__descr
-                  a(href="#").photo-item__title Путешествие на лодке по озеру
-                  .photo-item__social
-                    .photo-item__comments
-                      .photo-item__comments-icon
-                        include ../public/icons/comments.svg
-                      .photo-item__comments-text 9
-                    .photo-item__likes
-                      .photo-item__likes-icon
-                        include ../public/icons/like.svg
-                      .photo-item__likes-text 15
-              a(href="#").photo-item__album
-                .photo-item__album-icon
-                  include ../public/icons/album.svg
-                .photo-item__album-text Прогулки по воде
-            article.photo-item.photo-item--user
-              a(href="#").photo-item__photo
-              .photo-item__info
-                a(href="#").photo-item__user
-                  img(src="/img/mini_avatar.jpg").photo-item__user-photo
-                .photo-item__descr
-                  a(href="#").photo-item__title Путешествие на лодке по озеру
-                  .photo-item__social
-                    .photo-item__comments
-                      .photo-item__comments-icon
-                        include ../public/icons/comments.svg
-                      .photo-item__comments-text 9
-                    .photo-item__likes
-                      .photo-item__likes-icon
-                        include ../public/icons/like.svg
-                      .photo-item__likes-text 15
-              a(href="#").photo-item__album
-                .photo-item__album-icon
-                  include ../public/icons/album.svg
-                .photo-item__album-text Прогулки по воде
+            each val in photos
+              article.photo-item.photo-item--user
+                a(href="#").photo-item__photo
+                .photo-item__info
+                  a(href="#").photo-item__user
+                    img(src="/img/mini_avatar.jpg").photo-item__user-photo
+                  .photo-item__descr
+                    a(href="#").photo-item__title Путешествие на лодке по озеру
+                    .photo-item__social
+                      .photo-item__comments
+                        .photo-item__comments-icon
+                          include ../public/icons/comments.svg
+                        .photo-item__comments-text 9
+                      .photo-item__likes
+                        .photo-item__likes-icon
+                          include ../public/icons/like.svg
+                        .photo-item__likes-text 15
+                a(href="#").photo-item__album
+                  .photo-item__album-icon
+                    include ../public/icons/album.svg
+                  .photo-item__album-text Прогулки по воде
           a(href="#").photo-loader Показать ещё
       .my-alboms
         .container
@@ -197,42 +124,13 @@ body
             button(type="button").photo-btn.photo-btn--album
               .photo-btn__icon
                 include ../public/icons/add.svg
-            article.album-item.album-item--user
-              a(href="#").album-item__photo
-              .album-item__info
-                button#albumItemEdit.album-item__edit
-                  include ../public/icons/edit.svg
-                a(href="#").album-item__title Поход в горы
-            article.album-item.album-item--user
-              a(href="#").album-item__photo
-              .album-item__info
-                button#albumItemEdit.album-item__edit
-                  include ../public/icons/edit.svg
-                a(href="#").album-item__title Поход в горы
-            article.album-item.album-item--user
-              a(href="#").album-item__photo
-              .album-item__info
-                button#albumItemEdit.album-item__edit
-                  include ../public/icons/edit.svg
-                a(href="#").album-item__title Поход в горы
-            article.album-item.album-item--user
-              a(href="#").album-item__photo
-              .album-item__info
-                button#albumItemEdit.album-item__edit
-                  include ../public/icons/edit.svg
-                a(href="#").album-item__title Поход в горы
-            article.album-item.album-item--user
-              a(href="#").album-item__photo
-              .album-item__info
-                button#albumItemEdit.album-item__edit
-                  include ../public/icons/edit.svg
-                a(href="#").album-item__title Поход в горы
-            article.album-item.album-item--user
-              a(href="#").album-item__photo
-              .album-item__info
-                button#albumItemEdit.album-item__edit
-                  include ../public/icons/edit.svg
-                a(href="#").album-item__title Поход в горы
+            each val in alboms
+              article.album-item.album-item--user
+                a(href="#").album-item__photo
+                .album-item__info
+                  button#albumItemEdit.album-item__edit
+                    include ../public/icons/edit.svg
+                  a(href="#").album-item__title Поход в горы
     footer.user-footer
       .container
         .user-footer__promo.
