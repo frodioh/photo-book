@@ -12,11 +12,11 @@ var User = require('../models').user;
 var Albom = require('../models').albom;
 var Photo = require('../models').photo;
 
+//Страница пользователя
 router.get('/', function(req, res) {
   console.log(req.session);
-  console.log(req.cookies);
-  if(req.session.userId.length == 24) {
-    var query = {_id: new ObjectId(session.userId)};
+  if(req.session.userId) {
+    var query = {_id: new ObjectId(req.session.userId)};
     //Запрос к базе
     User.findOne(query, function(err, user) {
       if(user) {
@@ -30,14 +30,17 @@ router.get('/', function(req, res) {
               if(photos) {
                 information.photos = photos;
                 res.render('user', information);
+                console.log(information);
               } else {
-                res.render('user', information);
                 console.log(err);
+                console.log(information);
+                res.render('user', information);
               }
             });
           } else {
-            res.render('user', information);
             console.log(err);
+            console.log(information);
+            res.render('user', information);
           }
         });
       } else {

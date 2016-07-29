@@ -10,54 +10,57 @@ body
   .user-wrapper
     form(method="post" action="/user").edit-header
       .edit-header__top
-        .user-edit
-          .user-edit__info
-            input(type="file" id="editHeaderAvatar").user-edit__input-avatar
-            label(for="editHeaderAvatar").user-edit__avatar-wrapper
-              .user-edit__avatar-caption Изменить фото
-              img(src="#{userInfo.photoLink}").user-edit__avatar
-            .user-edit__descr
-              input(type="text" value="#{userInfo.name}").user-edit__name
-              textarea(type="text").user-edit__caption=userInfo.info
-                .user-card__social-icon.active
-                  include ../public/icons/soc_vk.svg
-                  .user-card__social-edit
-                    input(type="text" value="#{userInfo.social.vk}")#vkTextSocial.user-card__social-text
-                    button(type="button")#saveSocial.social-btn.social-btn--save Сохранить
-                    button(type="button")#canselSocial.social-btn.social-btn--cansel Отменить
-                .user-card__social-icon
-                  include ../public/icons/soc_fb.svg
-                  .user-card__social-edit
-                    input(type="text" value="#{userInfo.social.fb}")#fbTextSocial.user-card__social-text
-                    button(type="button")#saveSocial.social-btn.social-btn--save Сохранить
-                    button(type="button")#canselSocial.social-btn.social-btn--cansel Отменить
-                .user-card__social-icon
-                  include ../public/icons/soc_twitter.svg
-                  .user-card__social-edit
-                    input(type="text" value="#{userInfo.social.twitter}")#twitterTextSocial.user-card__social-text
-                    button(type="button")#saveSocial.social-btn.social-btn--save Сохранить
-                    button(type="button")#canselSocial.social-btn.social-btn--cansel Отменить
-                .user-card__social-icon
-                  include ../public/icons/social_google.svg
-                  .user-card__social-edit
-                    input(type="text" value="#{userInfo.social.googlePlus}")#googleTextSocial.user-card__social-text
-                    button(type="button")#saveSocial.social-btn.social-btn--save Сохранить
-                    button(type="button")#canselSocial.social-btn.social-btn--cansel Отменить
-                .user-card__social-icon
-                  include ../public/icons/soc_email.svg
-                  .user-card__social-edit
-                    input(type="text" value="#{userInfo.social.email}")#emailTextSocial.user-card__social-text
-                    button(type="button")#saveSocial.social-btn.social-btn--save Сохранить
-                    button(type="button")#canselSocial.social-btn.social-btn--cansel Отменить
-          input(type="file" id="editHeaderBg").user-edit__bg-input
-          label(for="editHeaderBg").user-edit__bg
-            .user-edit__bg-wrapper
-              include ../public/icons/cam.svg
-            .user-edit__bg-text Изменить фон
-      .hidden
         .container
-          button(type="button")#editHeaderBtnCancel.edit-header-btn.edit-header-btn--cansel Отменить
-          button(type="button")#editHeaderBtnSave.edit-header-btn.edit-header-btn--save Сохранить
+          .user-edit
+            .user-edit__info
+              input(type="file" id="editHeaderAvatar").user-edit__input-avatar
+              label(for="editHeaderAvatar").user-edit__avatar-wrapper
+                .user-edit__avatar-caption Изменить фото
+                img(src="#{userInfo.photoLink}").user-edit__avatar
+              .user-edit__descr
+                input(type="text" value="#{userInfo.name}").user-edit__name
+                textarea(type="text").user-edit__caption=userInfo.info
+                .user-card__social
+                  .user-card__social-icon.active
+                    include ../public/icons/soc_vk.svg
+                    .user-card__social-edit
+                      input(type="text" value="#{userInfo.social.vk}")#vkTextSocial.user-card__social-text
+                      button(type="button")#saveSocial.social-btn.social-btn--save Сохранить
+                      button(type="button")#canselSocial.social-btn.social-btn--cansel Отменить
+                  .user-card__social-icon
+                    include ../public/icons/soc_fb.svg
+                    .user-card__social-edit
+                      input(type="text" value="#{userInfo.social.fb}")#fbTextSocial.user-card__social-text
+                      button(type="button")#saveSocial.social-btn.social-btn--save Сохранить
+                      button(type="button")#canselSocial.social-btn.social-btn--cansel Отменить
+                  .user-card__social-icon
+                    include ../public/icons/soc_twitter.svg
+                    .user-card__social-edit
+                      input(type="text" value="#{userInfo.social.twitter}")#twitterTextSocial.user-card__social-text
+                      button(type="button")#saveSocial.social-btn.social-btn--save Сохранить
+                      button(type="button")#canselSocial.social-btn.social-btn--cansel Отменить
+                  .user-card__social-icon
+                    include ../public/icons/social_google.svg
+                    .user-card__social-edit
+                      input(type="text" value="#{userInfo.social.googlePlus}")#googleTextSocial.user-card__social-text
+                      button(type="button")#saveSocial.social-btn.social-btn--save Сохранить
+                      button(type="button")#canselSocial.social-btn.social-btn--cansel Отменить
+                  .user-card__social-icon
+                    include ../public/icons/soc_email.svg
+                    .user-card__social-edit
+                      input(type="text" value="#{userInfo.social.email}")#emailTextSocial.user-card__social-text
+                      button(type="button")#saveSocial.social-btn.social-btn--save Сохранить
+                      button(type="button")#canselSocial.social-btn.social-btn--cansel Отменить
+            input(type="file" id="editHeaderBg").user-edit__bg-input
+            label(for="editHeaderBg").user-edit__bg
+              .user-edit__bg-wrapper
+                include ../public/icons/cam.svg
+              .user-edit__bg-text Изменить фон
+      .hidden
+        .edit-header__btns
+          .container
+            button(type="button")#editHeaderBtnCancel.edit-header-btn.edit-header-btn--cansel Отменить
+            button(type="button")#editHeaderBtnSave.edit-header-btn.edit-header-btn--save Сохранить
     .user-wrapper__content
       header.user-header
         .container

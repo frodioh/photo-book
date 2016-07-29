@@ -77,4 +77,43 @@ window.onload = function() {
       });
     }());
   }
+  if(document.querySelector("#userEditBtn")) {
+    var userEditBtn = document.querySelector("#userEditBtn");
+    var userOffBtn = document.querySelector("#userOffBtn");
+    var editHeader = document.querySelector(".edit-header");
+    var userHeader = document.querySelector(".user-header");
+    var userSearch = document.querySelector(".user-search");
+    var editHeaderCancel = document.querySelector("#editHeaderBtnCancel");
+    var editHeaderSave = document.querySelector("#editHeaderBtnSave");
+    userEditBtn.addEventListener("click", function() {
+      editHeader.classList.toggle("active");
+      userHeader.style.opacity = 0;
+      userSearch.style.opacity = 0;
+    });
+    editHeaderCancel.addEventListener("click", function() {
+      editHeader.classList.toggle("active");
+      userHeader.style.opacity = 1;
+      userSearch.style.opacity = 1;
+    });
+    //Социальные ссылки
+    var social = $(".edit-header .user-card__social-icon");
+    var socialSave = $(".social-btn--save");
+    var socialCancel = $(".social-btn--cansel");
+    social.on("click", function(e) {
+      social.removeClass("active");
+      e.currentTarget.classList.add("active");
+    });
+    socialSave.on("click", function(e) {
+      e.stopPropagation();
+      var current = $(e.currentTarget.parentElement.parentElement);
+      current.removeClass("active");
+    });
+    socialCancel.on("click", function(e) {
+      e.stopPropagation();
+      var current = $(e.currentTarget.parentElement.parentElement);
+      var input = current.find(".user-card__social-text");
+      current.removeClass("active");
+      input.value = "";
+    });
+  }
 };

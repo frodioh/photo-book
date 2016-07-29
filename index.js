@@ -22,21 +22,8 @@ var Photo = require('./models').photo;
 //======================================================
 
 //Middleware
-//Директория статических ресурсов
-app.use(express.static('public'));
-//Установка движка рендеринга
-app.set('view engine', 'jade');
-app.set('views', path.resolve('./template'));
-//Преобразование тела запроса в json
-app.use(bodyParser.json());
-app.use(cookieParser());
-//Использование сессий
-app.use(session({
-  secret: 'coffee',
-  saveUninitialized: false,
-  resave: false,
-  store: new MongoStore({mongooseConnection: mongoose.connection})
-}));
+var middleware = require('./middleware')(app, express);
+
 
 app.get('/', function(req, res) {
   //Редирект на страницу пользователя
@@ -97,83 +84,7 @@ app.post('/register', function(req, res) {
 });
 
 //Страница пользователя
-app.get('/user', function(req, res) {
-  console.log(req.session);
-  if(req.session.userId) {
-    var query = {_id: new ObjectId(req.session.userId)};
-    //Запрос к базе
-    User.findOne(query, function(err, user) {
-      if(user) {
-        var information = {
-          userInfo: user
-        };
-        Albom.find({userId: user._id}, function(err, alboms) {
-          if(alboms) {
-            information.alboms = alboms;
-            Photo.find({}).sort({date: 'descending'}).limit(6).exec(function(err, photos) {
-              if(photos) {
-                information.photos = photos;
-                res.render('user', information);
-                console.log(information);
-              } else {
-                console.log(err);
-                console.log(information);
-                res.render('user', information);
-              }
-            });
-          } else {
-            console.log(err);
-            console.log(information);
-            res.render('user', information);
-          }
-        });
-      } else {
-        console.log(err);
-        res.redirect('../login');
-      }
-    });
-  } else {
-    res.redirect('../login');
-  }
-});
-
-app.get('user/:id', function(req, res) {
-  var id = req.params.id;
-  var session = req.session;
-  console.log(id);
-  if(id.length===24) {
-    var query = {_id: new ObjectId(id)};
-    User.findOne(query, function(err, user) {
-      if(user) {
-        var information = {
-          userInfo: user
-        };
-        Albom.find({userId: user._id}, function(err, alboms) {
-          if(alboms) {
-            information.alboms = alboms;
-            Photo.find({userId: user._id}, function(err, photos) {
-              if(photos) {
-                information.photos = photos;
-                res.render('anotherUser', information);
-              } else {
-                res.render('anotherUser', information);
-                console.log(err);
-              }
-            });
-          } else {
-            res.render('anotherUser', information);
-            console.log(err);
-          }
-        });
-      } else {
-        res.redirect('/');
-        console.log(err);
-      }
-    });
-  } else {
-    res.redirect('/');
-  }
-});
+app.use('/user', require('./routes/user'));
 
 //Страница альбома
 app.use('/album', require('./routes/album'));

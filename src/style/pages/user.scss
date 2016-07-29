@@ -28,6 +28,9 @@
 
 .edit-header__top {
   padding: 20px 0 55px 0;
+  background: url(../img/default_bg.jpg) no-repeat top center;
+  background-size: 100%;
+  width: 100%;
   & .container {
     flex-direction: row;
     justify-content: space-between;
@@ -43,6 +46,11 @@
 .hidden .container {
   justify-content: flex-end;
   align-items: top;
+}
+
+.edit-header__btns {
+  background: #dbdcdc;
+  padding: 10px 0;
 }
 
 .user-footer {
@@ -330,13 +338,6 @@
   color: rgba(255,255,255,.4);
 }
 
-.edit-header__top {
-  display: flex;
-  width: 92%;
-  max-width: 1180px;
-  margin: 0 auto;
-}
-
 .user-edit__input-avatar {
   display: none;
 }
@@ -516,9 +517,15 @@
 
 .edit-header-btn--cansel {
   margin-right: 10px;
+  cursor: pointer;
 }
 
 .edit-header-btn--save {
   background: #28bbf0;
   color: #fff;
+  cursor: pointer;
+}
+
+.edit-header .user-card__social-icon {
+  cursor: ponter;
 }

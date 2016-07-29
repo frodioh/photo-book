@@ -14,6 +14,8 @@ module.exports = function (app, express) {
     //Конфиг
     var config = require('../config.json');
 
+    //Директория статических ресурсов
+    app.use(express.static('public'));
     //Установка движка рендеринга
     app.set('view engine', 'jade');
     app.set('views', path.resolve('./template'));
@@ -23,10 +25,8 @@ module.exports = function (app, express) {
     //Использование сессий
     app.use(session({
       secret: 'coffee',
-      resave: false,
       saveUninitialized: false,
-      store: new MongoStore({
-        mongooseConnection: mongoose.connection
-      })
+      resave: false,
+      store: new MongoStore({mongooseConnection: mongoose.connection})
     }));
 };
