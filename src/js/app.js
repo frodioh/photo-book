@@ -115,28 +115,30 @@ window.onload = function() {
       input.value = "";
     });
     //Обновление пользовательских данных
-    var data = new FormData($('#userEditForm')[0]);
-    console.log(data);
-    $.ajax({
-        url: './work',
-        type: 'POST',
-        data: data,
-        cache: false,
-        processData: false,
-        contentType: false,
-        success: function(data) {
-          if(data.isValid===true) {
-            area.classList.add("admin-block-area--active");
-            modal.classList.add("admin-modal--active");
-            $('#workForm')[0].reset();
+    editHeaderSave.on("click", function() {
+      var data = new FormData($('#userEditForm')[0]);
+      console.log(data);
+      $.ajax({
+          url: './work',
+          type: 'POST',
+          data: data,
+          cache: false,
+          processData: false,
+          contentType: false,
+          success: function(data) {
+            if(data.isValid===true) {
+              area.classList.add("admin-block-area--active");
+              modal.classList.add("admin-modal--active");
+              $('#workForm')[0].reset();
+            }
+            if(data.isValid===false) {
+              area.classList.add("admin-block-area--active");
+              modal.classList.add("admin-modal--active");
+              modalText.innerHTML = "Похоже файл не смог загрузится(";
+              $('#workForm')[0].reset();
+            }
           }
-          if(data.isValid===false) {
-            area.classList.add("admin-block-area--active");
-            modal.classList.add("admin-modal--active");
-            modalText.innerHTML = "Похоже файл не смог загрузится(";
-            $('#workForm')[0].reset();
-          }
-        }
+      });
     });
   }
 };
