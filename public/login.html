@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<head>
+  <meta charset="utf-8">
+  <title>Photo-book</title>
+  <meta content="width=device-width, initial-scale=1" name="viewport">
+  <link rel="stylesheet" href="/css/main.css">
+  <script src="/js/foundation.js" defer></script>
+  <script src="/js/app.js" defer></script>
+</head>
+<body>
+  <div class="login-wrapper">
+    <div class="login-content">
+      <div class="headers">
+        <div class="headers__login active">
+          <h1 class="login-content__header">Добро пожаловать</h1>
+          <p class="login-content__caption">Перед вами сервис, который поможет вам организовать свои фотографии в альбомы и поделиться ими со всем миром!</p>
+        </div>
+        <div class="headers__register">
+          <h1 class="login-content__header">Регистрация</h1>
+        </div>
+      </div>
+      <div class="flipper">
+        <form method="post" action="/auth" class="login-form">
+          <input type="text" placeholder="Электронная почта" id="loginEmail" class="login-form__email">
+          <input type="password" placeholder="Пароль" id="loginPass" class="login-form__pass"><a href="#" class="login-form__forgot-link">Забыли пароль?</a>
+          <button type="button" class="login-form__login-btn">Войти</button>
+          <div class="login-form__sign-up">Нет аккаунта? <a href="#" id="loginSignUpLink" class="login-form__sign-up-link">Зарегестрироваться</a></div>
+        </form>
+        <form method="post" action="/register" class="register-form">
+          <input type="text" placeholder="Имя" id="registerName" class="register-form__name">
+          <input type="email" placeholder="Электронная почта" id="registerEmail" class="register-form__email">
+          <input type="password" placeholder="Пароль" id="registerPass" class="register-form__pass">
+          <p class="register-form__notice">Ваши данные остаются строго конфеденциальны</p>
+          <button type="button" class="register-create-btn">Создать аккаунт</button>
+          <div class="register-form__sign-in">Уже зарегестрированы? <a href="#" id="registerSignInLink" class="register-form__sign-in-link"> Войти</a></div>
+        </form>
+      </div>
+    </div>
+    <footer class="login-footer">2016 Создано командой профессионалов на продвинутом курсе по веб-разработке от Loftschool</footer>
+  </div>
+</body>

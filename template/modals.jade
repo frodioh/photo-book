@@ -1,0 +1,149 @@
+doctype html
+html
+ head
+     meta(charset='utf-8')
+     title Photo-book
+     meta(content='width=device-width, initial-scale=1' name='viewport')
+     link(rel="stylesheet", href="./css/main.css")
+     script(src='/js/foundation.js' defer)
+     script(src='/js/app.js' defer)
+ body.modals
+  .slider.__modal 
+   .img__section
+    img(src='../src/images/default_bg.jpg').img__slider
+   .description__section
+     .user__info
+      img.userpic(src="../src/images/mini_avatar.jpg")
+      h5.username Антон Черепов
+      .like__btn
+       include ../src/icons/heart.svg
+       span.likes__number 16
+     h3.heading__slide Путешествие на речном трамвайчике
+     p.text__slide Мы отправились в #путешествие 2 дня назад, но уже сейчас такое ощущение, что мы посмотрели целый новый мир. Далее будет ещё одно описательное предложение. Возможно оно также будет с #тегами.
+   .comments__section
+    .comments__head
+     h6.comments__header Комментарии
+     span.collapse__btn
+    .comments__body 	
+     img.comments__userpic(src="../src/images/mini_avatar.jpg")
+     h4.comments__username Антон Черепов
+     form.comments__form(action="add__commnet.php",method="POST")
+      input.comments__textarea(type="text",placeholder="Добавить комментарий")
+      input.comments__addbtn(type="submit", value="Добавить")
+   //album upload modal
+  .album__upload.__modal
+   .album__upload.__modal__head
+    p.album__upload.__modal__header Добавить альбом
+    img.album__upload__close(src="../src/icons/close.svg")
+   .album__upload__body
+    form.album__upload__form(action="add-album.php",method="POST")
+     label.album__upload__name__label(for="upload-name") Название
+     input.album__upload__name(type="text",name="upload-name",placeholder="Мой альбом")
+     label.album__upload__description__label(for="upload-description") Описание
+     input.album__upload__description(type="text",name="upload-description")
+     .album__upload__body__bottom__part
+      img.album__upload__preview(src="../src/images/photo_item.jpg")
+      input.album__upload__submit(type="submit",value="Загрузить обложку")
+      p.album__upload__warning (файл должен быть размером не более 1024 КБ)
+   .album__upload.__modal__footer
+    .album__upload.__save__btn Сохранить
+    .album__upload.__cancel__btn Отменить
+    .album__upload.__remove__btn
+     include ../src/icons/delete.svg
+     span.album__upload.__remove__btn__span Удалить
+     // album edit modal
+  .album__edit.__modal
+   .album__edit.__modal__head
+    p.album__edit.__modal__header Редактировать альбом
+    img.album__edit__close(src="../src/icons/close.svg")
+   .album__edit__body
+    form.album__edit__info__form(action="edit.php",method="POST")
+     label.album__edit__name__label(for="edit-name") Имя
+     input.album__edit__name__input(type="text", name="edit-name", placeholder="Имя")
+     input.album__edit__name__input(type="text", name="edit-name", placeholder="Фамилия")
+     label.album__edit__about__label(for="edit-about") Обо мне
+     input.album__edit__about__input(type="text", name="edit-about")
+     .album__edit__photo__upload
+      img.album__edit__img(src="../src/images/mini_avatar.jpg")
+      input.album__edit__photo__input(type="submit", value="Загрузить фотографию")
+      p.album__edit__photo__warning (файл должен быть размером не более 512 КБ)
+     .album__edit__bg__upload
+       img.album__edit__bg(src="../src/images/album_item.jpg")
+       input.album__edit__bg__input(type="submit", value="Загрузить фон")
+       p.album__edit__bg__warning (файл должен быть размером не более 1024 КБ)
+   .album__edit__soc__section
+    label.album__edit__vk.soc__label(for="vk") Вконтакте
+    input.album__edit__vk.soc__input(type="text")
+    label.album__edit__fb.soc__label(for="fb") Facebook
+    input.album__edit__fb.soc__input(type="text")
+    label.album__edit__email.soc__label(for="email") Email
+    input.album__edit__email.soc__input(type="text")
+    label.album__edit__twitter.soc__label(for="twitter") Twitter
+    input.album__edit__twitter.soc__input(type="text")
+   .album__edit.__modal__footer
+    .album__edit.__save__btn Сохранить
+    .album__edit.__cancel__btn Отменить
+    //photo delete modal
+  .photo__delete.__modal
+   .photo__delete.__modal__head
+    p.photo__delete.__modal__header Редактировать фотографию
+    img.photo__delete__close(src="../src/icons/close.svg")
+   .photo__delete__body
+    p.photo__delete__body__header Вы действительно хотите удалить фотографию?
+    .photo__delete__confirm Да
+    .photo__delete__cancel Отменить
+   .photo__delete.__modal__footer
+    .photo__delete.__save__btn Сохранить
+    .photo__delete.__cancel__btn Отменить
+    .photo__delete.__remove__btn
+     include ../src/icons/delete.svg
+     span.photo__delete.__remove__btn__span Удалить
+    //photo edit
+  .photo__edit.__modal
+   .photo__edit.__modal__head
+    p.photo__edit.__modal__header Редактировать фотографию
+    img.photo__edit__close(src="../src/icons/close.svg")
+   .photo__edit__body
+    form.photo__edit__form(action="add-album.php",method="POST")
+     label.photo__edit__name__label(for="edit-name") Название
+     input.photo__edit__name(type="text",name="edit-name")
+     label.photo__edit__description__label(for="edit-description") Описание
+     input.photo__edit__description(type="text",name="edit-description")
+   .photo__edit.__modal__footer
+    .photo__edit.__save__btn Сохранить
+    .photo__edit.__cancel__btn Отменить
+    .photo__edit.__remove__btn
+     include ../src/icons/delete.svg
+     span.photo__edit.__remove__btn__span Удалить
+     //photo upload modal
+  .photo__upload.__modal
+   .photo__upload.__modal__head
+    p.photo__upload.__modal__header Добавить фотографии
+    img.photo__upload__close(src="../src/icons/close.svg")
+   .photo__upload__body
+    p.photo__upload__text Название
+    p.photo__upload__name Как я провел лето
+    form.photo__upload__form(method="POST",enctype="multipart/form-data")
+     .photo__upload__file__block
+      img.photo__upload__file__img(src="../src/icons/cam.svg")
+      label.photo__upload__file__label(for="file-input") 
+       span.photo__upload__file__span выберите файл
+       input.photo__upload__file__input(type="file",multiple,size="300px",name="file-input")
+   .photo__upload.__modal__footer
+    .photo__upload.__save__btn Сохранить
+    .photo__upload.__cancel__btn Отменить
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

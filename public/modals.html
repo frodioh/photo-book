@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Photo-book</title>
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+    <link rel="stylesheet" href="./css/main.css">
+    <script src="/js/foundation.js" defer></script>
+    <script src="/js/app.js" defer></script>
+  </head>
+  <body class="modals">
+    <div class="slider __modal"> 
+      <div class="img__section"><img src="../src/images/default_bg.jpg" class="img__slider"></div>
+      <div class="description__section">
+        <div class="user__info"><img src="../src/images/mini_avatar.jpg" class="userpic">
+          <h5 class="username">Антон Черепов</h5>
+          <div class="like__btn"><?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 16.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 width="20px" height="16.858px" viewBox="54 55.571 20 16.858" enable-background="new 54 55.571 20 16.858" xml:space="preserve">
+<path fill="#232323" d="M74,60.858c0-2.92-2.367-5.287-5.287-5.287c-2.06,0-3.841,1.181-4.713,2.901
+	c-0.873-1.72-2.653-2.901-4.713-2.901c-2.919,0-5.287,2.367-5.287,5.287c0,5.522,8.87,11.571,10,11.571
+	C65.131,72.43,74,66.407,74,60.858z"/>
+</svg>
+<span class="likes__number">16</span>
+          </div>
+        </div>
+        <h3 class="heading__slide">Путешествие на речном трамвайчике</h3>
+        <p class="text__slide">Мы отправились в #путешествие 2 дня назад, но уже сейчас такое ощущение, что мы посмотрели целый новый мир. Далее будет ещё одно описательное предложение. Возможно оно также будет с #тегами.</p>
+      </div>
+      <div class="comments__section">
+        <div class="comments__head">
+          <h6 class="comments__header">Комментарии</h6><span class="collapse__btn"></span>
+        </div>
+        <div class="comments__body">	<img src="../src/images/mini_avatar.jpg" class="comments__userpic">
+          <h4 class="comments__username">Антон Черепов</h4>
+          <form action="add__commnet.php" method="POST" class="comments__form">
+            <input type="text" placeholder="Добавить комментарий" class="comments__textarea">
+            <input type="submit" value="Добавить" class="comments__addbtn">
+          </form>
+        </div>
+      </div>
+      <!--album upload modal-->
+    </div>
+    <div class="album__upload __modal">
+      <div class="album__upload __modal__head">
+        <p class="album__upload __modal__header">Добавить альбом</p><img src="../src/icons/close.svg" class="album__upload__close">
+      </div>
+      <div class="album__upload__body">
+        <form action="add-album.php" method="POST" class="album__upload__form">
+          <label for="upload-name" class="album__upload__name__label">Название</label>
+          <input type="text" name="upload-name" placeholder="Мой альбом" class="album__upload__name">
+          <label for="upload-description" class="album__upload__description__label">Описание</label>
+          <input type="text" name="upload-description" class="album__upload__description">
+          <div class="album__upload__body__bottom__part"><img src="../src/images/photo_item.jpg" class="album__upload__preview">
+            <input type="submit" value="Загрузить обложку" class="album__upload__submit">
+            <p class="album__upload__warning">(файл должен быть размером не более 1024 КБ)</p>
+          </div>
+        </form>
+      </div>
+      <div class="album__upload __modal__footer">
+        <div class="album__upload __save__btn">Сохранить</div>
+        <div class="album__upload __cancel__btn">Отменить</div>
+        <div class="album__upload __remove__btn"><?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 16.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" id="Trash" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 width="12px" height="15.139px" viewBox="63.5 61.931 12 15.139" enable-background="new 63.5 61.931 12 15.139"
+	 xml:space="preserve">
+<g>
+	<path d="M75.197,64.264v-0.036c0-1.269-0.767-2.298-1.712-2.298h-7.972c-0.946,0-1.712,1.029-1.712,2.298v0.036H75.197z"/>
+	<path d="M75.258,66.223c-0.19-0.224-0.47-0.353-0.764-0.353h-9.99c-0.294,0-0.573,0.129-0.764,0.353s-0.274,0.52-0.229,0.81
+		l1.452,9.188c0.077,0.489,0.498,0.849,0.993,0.849h7.084c0.495,0,0.916-0.359,0.993-0.849l1.452-9.188
+		C75.533,66.743,75.449,66.447,75.258,66.223z M66.681,75.703c-0.017,0.002-0.034,0.003-0.051,0.003
+		c-0.294,0-0.545-0.226-0.571-0.525l-0.601-6.867c-0.028-0.315,0.206-0.594,0.522-0.622c0.313-0.034,0.595,0.206,0.622,0.522
+		l0.601,6.867C67.231,75.397,66.998,75.676,66.681,75.703z M70.073,75.132c0,0.316-0.257,0.574-0.574,0.574
+		c-0.317,0-0.575-0.258-0.575-0.574v-6.894c0-0.317,0.257-0.575,0.575-0.575c0.317,0,0.574,0.257,0.574,0.575V75.132z
+		 M72.865,75.181c-0.025,0.3-0.276,0.524-0.571,0.524c-0.016,0-0.033,0-0.051-0.002c-0.315-0.027-0.55-0.307-0.521-0.622
+		l0.601-6.867c0.027-0.316,0.307-0.555,0.622-0.522c0.316,0.027,0.55,0.306,0.521,0.622L72.865,75.181z"/>
+</g>
+</svg>
+<span class="album__upload __remove__btn__span">Удалить</span>
+          <!-- album edit modal-->
+        </div>
+      </div>
+    </div>
+    <div class="album__edit __modal">
+      <div class="album__edit __modal__head">
+        <p class="album__edit __modal__header">Редактировать альбом</p><img src="../src/icons/close.svg" class="album__edit__close">
+      </div>
+      <div class="album__edit__body">
+        <form action="edit.php" method="POST" class="album__edit__info__form">
+          <label for="edit-name" class="album__edit__name__label">Имя</label>
+          <input type="text" name="edit-name" placeholder="Имя" class="album__edit__name__input">
+          <input type="text" name="edit-name" placeholder="Фамилия" class="album__edit__name__input">
+          <label for="edit-about" class="album__edit__about__label">Обо мне</label>
+          <input type="text" name="edit-about" class="album__edit__about__input">
+          <div class="album__edit__photo__upload"><img src="../src/images/mini_avatar.jpg" class="album__edit__img">
+            <input type="submit" value="Загрузить фотографию" class="album__edit__photo__input">
+            <p class="album__edit__photo__warning">(файл должен быть размером не более 512 КБ)</p>
+          </div>
+          <div class="album__edit__bg__upload"><img src="../src/images/album_item.jpg" class="album__edit__bg">
+            <input type="submit" value="Загрузить фон" class="album__edit__bg__input">
+            <p class="album__edit__bg__warning">(файл должен быть размером не более 1024 КБ)</p>
+          </div>
+        </form>
+      </div>
+      <div class="album__edit__soc__section">
+        <label for="vk" class="album__edit__vk soc__label">Вконтакте</label>
+        <input type="text" class="album__edit__vk soc__input">
+        <label for="fb" class="album__edit__fb soc__label">Facebook</label>
+        <input type="text" class="album__edit__fb soc__input">
+        <label for="email" class="album__edit__email soc__label">Email</label>
+        <input type="text" class="album__edit__email soc__input">
+        <label for="twitter" class="album__edit__twitter soc__label">Twitter</label>
+        <input type="text" class="album__edit__twitter soc__input">
+      </div>
+      <div class="album__edit __modal__footer">
+        <div class="album__edit __save__btn">Сохранить</div>
+        <div class="album__edit __cancel__btn">Отменить</div>
+        <!--photo delete modal-->
+      </div>
+    </div>
+    <div class="photo__delete __modal">
+      <div class="photo__delete __modal__head">
+        <p class="photo__delete __modal__header">Редактировать фотографию</p><img src="../src/icons/close.svg" class="photo__delete__close">
+      </div>
+      <div class="photo__delete__body">
+        <p class="photo__delete__body__header">Вы действительно хотите удалить фотографию?</p>
+        <div class="photo__delete__confirm">Да</div>
+        <div class="photo__delete__cancel">Отменить</div>
+      </div>
+      <div class="photo__delete __modal__footer">
+        <div class="photo__delete __save__btn">Сохранить</div>
+        <div class="photo__delete __cancel__btn">Отменить</div>
+        <div class="photo__delete __remove__btn"><?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 16.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" id="Trash" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 width="12px" height="15.139px" viewBox="63.5 61.931 12 15.139" enable-background="new 63.5 61.931 12 15.139"
+	 xml:space="preserve">
+<g>
+	<path d="M75.197,64.264v-0.036c0-1.269-0.767-2.298-1.712-2.298h-7.972c-0.946,0-1.712,1.029-1.712,2.298v0.036H75.197z"/>
+	<path d="M75.258,66.223c-0.19-0.224-0.47-0.353-0.764-0.353h-9.99c-0.294,0-0.573,0.129-0.764,0.353s-0.274,0.52-0.229,0.81
+		l1.452,9.188c0.077,0.489,0.498,0.849,0.993,0.849h7.084c0.495,0,0.916-0.359,0.993-0.849l1.452-9.188
+		C75.533,66.743,75.449,66.447,75.258,66.223z M66.681,75.703c-0.017,0.002-0.034,0.003-0.051,0.003
+		c-0.294,0-0.545-0.226-0.571-0.525l-0.601-6.867c-0.028-0.315,0.206-0.594,0.522-0.622c0.313-0.034,0.595,0.206,0.622,0.522
+		l0.601,6.867C67.231,75.397,66.998,75.676,66.681,75.703z M70.073,75.132c0,0.316-0.257,0.574-0.574,0.574
+		c-0.317,0-0.575-0.258-0.575-0.574v-6.894c0-0.317,0.257-0.575,0.575-0.575c0.317,0,0.574,0.257,0.574,0.575V75.132z
+		 M72.865,75.181c-0.025,0.3-0.276,0.524-0.571,0.524c-0.016,0-0.033,0-0.051-0.002c-0.315-0.027-0.55-0.307-0.521-0.622
+		l0.601-6.867c0.027-0.316,0.307-0.555,0.622-0.522c0.316,0.027,0.55,0.306,0.521,0.622L72.865,75.181z"/>
+</g>
+</svg>
+<span class="photo__delete __remove__btn__span">Удалить</span>
+        </div>
+        <!--photo edit-->
+      </div>
+    </div>
+    <div class="photo__edit __modal">
+      <div class="photo__edit __modal__head">
+        <p class="photo__edit __modal__header">Редактировать фотографию</p><img src="../src/icons/close.svg" class="photo__edit__close">
+      </div>
+      <div class="photo__edit__body">
+        <form action="add-album.php" method="POST" class="photo__edit__form">
+          <label for="edit-name" class="photo__edit__name__label">Название</label>
+          <input type="text" name="edit-name" class="photo__edit__name">
+          <label for="edit-description" class="photo__edit__description__label">Описание</label>
+          <input type="text" name="edit-description" class="photo__edit__description">
+        </form>
+      </div>
+      <div class="photo__edit __modal__footer">
+        <div class="photo__edit __save__btn">Сохранить</div>
+        <div class="photo__edit __cancel__btn">Отменить</div>
+        <div class="photo__edit __remove__btn"><?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 16.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" id="Trash" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 width="12px" height="15.139px" viewBox="63.5 61.931 12 15.139" enable-background="new 63.5 61.931 12 15.139"
+	 xml:space="preserve">
+<g>
+	<path d="M75.197,64.264v-0.036c0-1.269-0.767-2.298-1.712-2.298h-7.972c-0.946,0-1.712,1.029-1.712,2.298v0.036H75.197z"/>
+	<path d="M75.258,66.223c-0.19-0.224-0.47-0.353-0.764-0.353h-9.99c-0.294,0-0.573,0.129-0.764,0.353s-0.274,0.52-0.229,0.81
+		l1.452,9.188c0.077,0.489,0.498,0.849,0.993,0.849h7.084c0.495,0,0.916-0.359,0.993-0.849l1.452-9.188
+		C75.533,66.743,75.449,66.447,75.258,66.223z M66.681,75.703c-0.017,0.002-0.034,0.003-0.051,0.003
+		c-0.294,0-0.545-0.226-0.571-0.525l-0.601-6.867c-0.028-0.315,0.206-0.594,0.522-0.622c0.313-0.034,0.595,0.206,0.622,0.522
+		l0.601,6.867C67.231,75.397,66.998,75.676,66.681,75.703z M70.073,75.132c0,0.316-0.257,0.574-0.574,0.574
+		c-0.317,0-0.575-0.258-0.575-0.574v-6.894c0-0.317,0.257-0.575,0.575-0.575c0.317,0,0.574,0.257,0.574,0.575V75.132z
+		 M72.865,75.181c-0.025,0.3-0.276,0.524-0.571,0.524c-0.016,0-0.033,0-0.051-0.002c-0.315-0.027-0.55-0.307-0.521-0.622
+		l0.601-6.867c0.027-0.316,0.307-0.555,0.622-0.522c0.316,0.027,0.55,0.306,0.521,0.622L72.865,75.181z"/>
+</g>
+</svg>
+<span class="photo__edit __remove__btn__span">Удалить</span>
+          <!--photo upload modal-->
+        </div>
+      </div>
+    </div>
+    <div class="photo__upload __modal">
+      <div class="photo__upload __modal__head">
+        <p class="photo__upload __modal__header">Добавить фотографии</p><img src="../src/icons/close.svg" class="photo__upload__close">
+      </div>
+      <div class="photo__upload__body">
+        <p class="photo__upload__text">Название</p>
+        <p class="photo__upload__name">Как я провел лето</p>
+        <form method="POST" enctype="multipart/form-data" class="photo__upload__form">
+          <div class="photo__upload__file__block"><img src="../src/icons/cam.svg" class="photo__upload__file__img">
+            <label for="file-input" class="photo__upload__file__label"> <span class="photo__upload__file__span">выберите файл</span>
+              <input type="file" multiple size="300px" name="file-input" class="photo__upload__file__input">
+            </label>
+          </div>
+        </form>
+      </div>
+      <div class="photo__upload __modal__footer">
+        <div class="photo__upload __save__btn">Сохранить</div>
+        <div class="photo__upload __cancel__btn">Отменить</div>
+      </div>
+    </div>
+  </body>
+</html>
