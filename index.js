@@ -6,6 +6,7 @@ var path = require('path');
 var fs = require('fs');
 var bodyParser = require('body-parser');
 var cookieParser = require("cookie-parser");
+var multiparty = require('multiparty');
 //Конфиг
 var config = require('./config.json');
 //Создание сервера
@@ -77,15 +78,137 @@ app.post('/register', function(req, res) {
           res.json({isValid: false});
         }
         else {
-          var userDir = path.resolve('./media/' + doc._id);
+          var userDir = path.resolve('./public/media/' + doc._id);
           console.log(userDir);
           if (!fs.existsSync(userDir)) {
             fs.mkdirSync(userDir);
+            fs.mkdirSync(path.resolve('./public/media/' + doc._id + "/avatar"));
+            fs.mkdirSync(path.resolve('./public/media/' + doc._id + "/bg"));
+            fs.mkdirSync(path.resolve('./public/media/' + doc._id + "/albums"));
           }
           res.redirect('/login');
         }
       });
     }
+  });
+});
+
+app.post('/profile', function(req, res) {
+  var session = req.session;
+  var form = new multiparty.Form();
+  form.parse(req, function(err, fields, files) {
+    var user = {
+      name: fields.userEditName,
+      info: fields.userEditCaption,
+      photoLink: '/media/' + session.userId + '/avatar/avatar' + path.parse(files.userEditAvatar[0].path).ext,
+      bgLink: '/media/' + session.userId + '/bg/bg' + path.parse(files.userEditBg[0].path).ext,
+      social: {
+        vk: fields.userEditVk,
+        fb: fields.userEditFb,
+        twitter: fields.userEditTwitter,
+        googlePlus: fields.userEditGoogle,
+        email: fields.userEditEmail,
+      }
+    };
+    var newFilePathAvatar = './public/media/' + session.userId + '/avatar/avatar' + path.parse(files.userEditAvatar[0].path).ext;
+    var newFilePathBg = './public/media/' + session.userId + '/bg/bg' + path.parse(files.userEditBg[0].path).ext;
+    try {
+      fs.writeFileSync(path.resolve(newFilePathAvatar),fs.readFileSync(files.userEditAvatar[0].path));
+      fs.writeFileSync(path.resolve(newFilePathBg),fs.readFileSync(files.userEditBg[0].path));
+    } catch (err) {
+      console.log("файл не загрузился");
+      console.log(files.userEditBg[0].path);
+      console.log(files.userEditAvatar[0].path);
+      console.log(err);
+      console.log(newFilePathBg);
+      console.log(newFilePathAvatar);
+    }
+    User.findOne({_id: new ObjectId(req.session.userId)}, function (err, doc){
+      doc.name = user.name;
+      doc.info = user.info;
+      console.log(files.userEditAvatar[0].path);
+      console.log(files.userEditBg[0].path);
+      console.log(files.userEditBg[0]);
+      console.log(files.userEditAvatar[0]);
+      if (files.userEditAvatar[0].originalFilename) {
+        doc.photoLink = user.photoLink;
+      }
+      if (files.userEditBg[0].originalFilename) {
+        doc.bgLink = user.bgLink;
+      }
+      doc.social.vk = user.social.vk;
+      doc.social.fb = user.social.fb;
+      doc.social.twitter = user.social.twitter;
+      doc.social.googlePlus = user.social.googlePlus;
+      doc.social.email = user.social.email;
+      doc.save();
+      var valid = {
+            "isValid": true
+          };
+      valid = JSON.stringify(valid);
+      res.setHeader('Content-Type', 'application/json; charset=utf8;');
+      res.end(valid);
+    });
+  });
+});
+
+//Добавление альбома
+app.post('/profile', function(req, res) {
+  var session = req.session;
+  var form = new multiparty.Form();
+  form.parse(req, function(err, fields, files) {
+    var user = {
+      name: fields.userEditName,
+      info: fields.userEditCaption,
+      photoLink: '/media/' + session.userId + '/avatar/avatar' + path.parse(files.userEditAvatar[0].path).ext,
+      bgLink: '/media/' + session.userId + '/bg/bg' + path.parse(files.userEditBg[0].path).ext,
+      social: {
+        vk: fields.userEditVk,
+        fb: fields.userEditFb,
+        twitter: fields.userEditTwitter,
+        googlePlus: fields.userEditGoogle,
+        email: fields.userEditEmail,
+      }
+    };
+    var newFilePathAvatar = './public/media/' + session.userId + '/avatar/avatar' + path.parse(files.userEditAvatar[0].path).ext;
+    var newFilePathBg = './public/media/' + session.userId + '/bg/bg' + path.parse(files.userEditBg[0].path).ext;
+    try {
+      fs.writeFileSync(path.resolve(newFilePathAvatar),fs.readFileSync(files.userEditAvatar[0].path));
+      fs.writeFileSync(path.resolve(newFilePathBg),fs.readFileSync(files.userEditBg[0].path));
+    } catch (err) {
+      console.log("файл не загрузился");
+      console.log(files.userEditBg[0].path);
+      console.log(files.userEditAvatar[0].path);
+      console.log(err);
+      console.log(newFilePathBg);
+      console.log(newFilePathAvatar);
+    }
+    User.findOne({_id: new ObjectId(req.session.userId)}, function (err, doc){
+      doc.name = user.name;
+      doc.info = user.info;
+      console.log(files.userEditAvatar[0].path);
+      console.log(files.userEditBg[0].path);
+      console.log(files.userEditBg[0]);
+      console.log(files.userEditAvatar[0]);
+      if (files.userEditAvatar[0].originalFilename) {
+        doc.photoLink = user.photoLink;
+      }
+      if (files.userEditBg[0].originalFilename) {
+        doc.bgLink = user.bgLink;
+      }
+      doc.social.vk = user.social.vk;
+      doc.social.fb = user.social.fb;
+      doc.social.twitter = user.social.twitter;
+      doc.social.googlePlus = user.social.googlePlus;
+      doc.social.email = user.social.email;
+      doc.save();
+      var valid = {
+            "isValid": true
+          };
+      valid = JSON.stringify(valid);
+      res.setHeader('Content-Type', 'application/json; charset=utf8;');
+      res.end(valid);
+    });
   });
 });
 

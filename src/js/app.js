@@ -81,9 +81,14 @@ window.onload = function() {
     var userOffBtn = document.querySelector("#userOffBtn");
     var editHeader = document.querySelector(".edit-header");
     var userHeader = document.querySelector(".user-header");
+    var userHeaderTop = document.querySelector(".edit-header__top");
+    var userFooter = document.querySelector(".user-footer");
     var userSearch = document.querySelector(".user-search");
     var editHeaderCancel = document.querySelector("#editHeaderBtnCancel");
-    var editHeaderSave = document.querySelector("#editHeaderBtnSave");
+    var editHeaderSave = $("#editHeaderBtnSave");
+    var editHeaderAvatar = $("#editHeaderAvatar");
+    var editHeaderBg = $("#editHeaderBg");
+
     userEditBtn.addEventListener("click", function() {
       editHeader.classList.toggle("active");
       userHeader.style.opacity = 0;
@@ -114,28 +119,97 @@ window.onload = function() {
       current.removeClass("active");
       input.value = "";
     });
+    editHeaderAvatar.on("change", function(e) {
+      var userEditAvatarWrap = document.querySelector(".user-edit__avatar-wrapper");
+      var userEditAvatar = document.querySelector(".user-edit__avatar");
+      var userAvatar = document.querySelector(".user-card__photo");
+      var file = e.currentTarget.files[0];
+      var reader = new FileReader();
+      reader.onload = function(e) {
+        var dataUrl = e.target.result;
+        var image = new Image();
+        image.width = 128;
+        image.onload = function() {
+
+        };
+        image.src = dataUrl;
+        document.querySelector(".user-edit__avatar").remove();
+        userEditAvatarWrap.appendChild(image);
+        image.classList.add("user-edit__avatar");
+      };
+      reader.readAsDataURL(file);
+    });
+    editHeaderBg.on("change", function(e) {
+      var userEditBg = $("#editHeaderBg");
+      var reader = new FileReader();
+      var file = e.currentTarget.files[0];
+      reader.onload = function(e) {
+        var dataUrl = e.target.result;
+        userHeader.style = "background-image: url(" + dataUrl + ");";
+        userHeaderTop.style = "background-image: url(" + dataUrl + ");";
+        userFooter.style = "background-image: url(" + dataUrl + ");";
+      };
+      reader.readAsDataURL(file);
+    });
     //Обновление пользовательских данных
     editHeaderSave.on("click", function() {
       var data = new FormData($('#userEditForm')[0]);
       console.log(data);
+      console.log(document.querySelector("#editHeaderAvatar").value);
+      console.log(document.querySelector("#editHeaderBg").value);
       $.ajax({
-          url: './work',
+          url: '/profile',
           type: 'POST',
           data: data,
           cache: false,
           processData: false,
           contentType: false,
           success: function(data) {
-            if(data.isValid===true) {
-              area.classList.add("admin-block-area--active");
-              modal.classList.add("admin-modal--active");
-              $('#workForm')[0].reset();
+            if(data.isValid) {
+              location.reload();
             }
-            if(data.isValid===false) {
-              area.classList.add("admin-block-area--active");
-              modal.classList.add("admin-modal--active");
-              modalText.innerHTML = "Похоже файл не смог загрузится(";
-              $('#workForm')[0].reset();
+          }
+      });
+    });
+    //Добавление альбома
+    var addAlbumBtn = document.querySelector(".photo-btn.photo-btn--album");
+    var addAlbumModal = document.querySelector(".album__upload");
+    var addAlbumCancel = document.querySelector(".album__upload.__cancel__btn");
+    var addAlbumClose = document.querySelector("img.album__upload__close");
+    var albumThumbInput = document.querySelector("#albumUploadThumb");
+    var albumThumb = document.querySelector(".album__upload__preview");
+    var addAlbumSave = document.querySelector(".album__upload.__save__btn");
+    albumThumbInput.addEventListener("change", function(e) {
+      var file = e.currentTarget.files[0];
+      var reader = new FileReader();
+      reader.onload = function(e) {
+        var dataUrl = e.target.result;
+        albumThumb.src = dataUrl;
+      };
+      reader.readAsDataURL(file);
+    });
+    addAlbumBtn.addEventListener("click", function() {
+      addAlbumModal.classList.add("active");
+    });
+    addAlbumCancel.addEventListener("click", function() {
+      addAlbumModal.classList.remove("active");
+    });
+    addAlbumClose.addEventListener("click", function() {
+      addAlbumModal.classList.remove("active");
+    });
+    addAlbumSave.addEventListener("click", function(e) {
+      var data = new FormData($('#addAlbomForm')[0]);
+      console.log(data);
+      $.ajax({
+          url: '/addAlbum',
+          type: 'POST',
+          data: data,
+          cache: false,
+          processData: false,
+          contentType: false,
+          success: function(data) {
+            if(data.isValid) {
+              location.reload();
             }
           }
       });

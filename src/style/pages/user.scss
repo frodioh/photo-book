@@ -28,7 +28,9 @@
 
 .edit-header__top {
   padding: 20px 0 55px 0;
-  background: url(../img/default_bg.jpg) no-repeat top center;
+  background-image: url(../img/default_bg.jpg);
+  background-repeat: no-repeat;
+  background-position: top center;
   background-size: 100%;
   width: 100%;
   & .container {
@@ -56,7 +58,9 @@
 .user-footer {
   padding: 15px 0;
   align-items: flex-start;
-  background: url(../img/default_bg.jpg) no-repeat center bottom;
+  background-image: url(../img/default_bg.jpg);
+  background-repeat: no-repeat;
+  background-position: center bottom;
   background-size: cover;
   & .container {
     justify-content: space-between;
@@ -79,7 +83,9 @@
 
 .user-header {
   padding: 20px 0 55px 0;
-  background: url(../img/default_bg.jpg) no-repeat top center;
+  background-image: url(../img/default_bg.jpg);
+  background-repeat: no-repeat;
+  background-position: top center;
   background-size: 100%;
   & .container {
     flex-direction: row;
@@ -527,5 +533,17 @@
 }
 
 .edit-header .user-card__social-icon {
-  cursor: ponter;
+  //cursor: pointer;
+}
+
+.user-edit .user-card__social-icon svg {
+  cursor: pointer;
+}
+
+#albumUploadThumb {
+  display: none;
+}
+
+.album__upload__close {
+  cursor: pointer;
 }

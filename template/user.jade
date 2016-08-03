@@ -8,8 +8,29 @@ head
   script(src='/js/app.js' defer)
 body
   .user-wrapper
-    form(method="post" action="/user")#userEditForm.edit-header
-      .edit-header__top
+    .album__upload.__modal
+      .album__upload.__modal__head
+        p.album__upload.__modal__header Добавить альбом
+        img.album__upload__close(src="/icons/close.svg")
+      .album__upload__body
+        form.album__upload__form(action="/addAlbum" method="POST" enctype="multipart/form-data" id="addAlbomForm")
+          label.album__upload__name__label(for="upload-name") Название
+          input.album__upload__name(type="text",name="upload-name",placeholder="Мой альбом")
+          label.album__upload__description__label(for="upload-description") Описание
+          input.album__upload__description(type="text",name="upload-description")
+          .album__upload__body__bottom__part
+            img.album__upload__preview(src="/img/photo_item.jpg")
+            input(type="file" id="albumUploadThumb")
+            label.album__upload__submit(for="albumUploadThumb") Загрузить обложку
+            p.album__upload__warning (файл должен быть размером не более 1024 КБ)
+      .album__upload.__modal__footer
+        .album__upload.__save__btn Сохранить
+        .album__upload.__cancel__btn Отменить
+        .album__upload.__remove__btn
+         include ../public/icons/delete.svg
+         span.album__upload.__remove__btn__span Удалить
+    form(method="post" action="/user" enctype="multipart/form-data")#userEditForm.edit-header
+      .edit-header__top(style="background-image: url('#{userInfo.bgLink}');")
         .container
           .user-edit
             .user-edit__info
@@ -62,7 +83,7 @@ body
             button(type="button")#editHeaderBtnCancel.edit-header-btn.edit-header-btn--cansel Отменить
             button(type="button")#editHeaderBtnSave.edit-header-btn.edit-header-btn--save Сохранить
     .user-wrapper__content
-      header.user-header
+      header.user-header(style="background-image: url('#{userInfo.bgLink}');")
         .container
           .user-card.user-card--user
             .user-card__photo-wrapper
@@ -134,7 +155,7 @@ body
                   button#albumItemEdit.album-item__edit
                     include ../public/icons/edit.svg
                   a(href="#").album-item__title Поход в горы
-    footer.user-footer
+    footer.user-footer(style="background-image: url('#{userInfo.bgLink}');")
       .container
         .user-footer__promo.
           Перед вами сервис, который поможет вам организовать свои фотографии в альбомы и поделиться ими со всем миром!

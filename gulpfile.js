@@ -44,10 +44,6 @@ $.gulp.task('default', $.gulp.series(
     'js.process',
     'copy.image',
     'copy.fonts'
-  ),
-  $.gulp.parallel(
-    'watch',
-    'serve'
   )
 ));
 

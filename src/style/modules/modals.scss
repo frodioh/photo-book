@@ -1,0 +1,616 @@
+//--------COMMON CLASSES--------//
+.modals {
+	background-color: #070808;
+	height: 1000px;
+}
+
+.__modal {
+  display: none;
+  width: 690px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
+  &.active {
+    display: block;
+  }
+}
+
+.__modal__head {
+	width: 100%;
+	height: 70px;
+	background-color: #f1f1f1;
+	padding: 20px;
+}
+
+.__modal__header {
+	font-size: 21px;
+	margin: 0;
+	display: inline;
+}
+
+.__modal__footer {
+	background-color: #f1f1f1;
+    height: 67px;
+    padding: 15px 20px;
+    &:before,&:after {
+     content: "";
+     display: block;
+     clear: both;
+     visibility: hidden;
+     line-height: 0;
+     height: 0;
+	}
+}
+
+.__save__btn {
+	background-color: #28bbf0;
+	color: #fff;
+	float: left;
+	padding: 12px 20px;
+	margin: 0 20px 0 0;
+	border-radius: 50px;
+	transition: all 0.5s;
+	&:hover {
+		background-color: #fff;
+		color: #28bbf0;
+		cursor: pointer;
+	}
+}
+
+.__cancel__btn {
+	float: left;
+	padding: 13px 0 0 0;
+	color: #28bbf0;
+	cursor: pointer;
+
+}
+
+.__remove__btn {
+	float: right;
+	padding: 10px 20px;
+	background-color: #ee4634;
+	border-radius: 50px;
+	transition: all 0.5s;
+	&:hover {
+		cursor: pointer;
+		background-color: #d94130;
+	}
+}
+
+.__remove__btn__span {
+	padding: 0 0 0 10px;
+	color: #fff;
+}
+//-----------SLIDER MODAL---------//
+
+.img__section {
+	width: 690px; 
+	height: 460px;
+}
+
+.img__slider {
+     width: 100%;
+     height: 100%;
+}
+
+.description__section {
+	background-color: #ffffff;
+	position: relative;
+	padding: 20px;
+}
+
+.user__info {
+	width: 100%;
+	display: inline-block;
+	position: relative;
+	
+}
+
+.img__userpic {
+	width: 55px;
+	height: 55px;
+}
+
+.username {
+	display: inline-block;
+	margin: 0;
+    position: absolute;
+    top: 35%;
+    left: 11%;
+    font-size: 16px;
+}
+
+.like__btn {
+	position: absolute;
+	right:10%;
+	top: 0;
+	padding: 9px 21px;
+	background-color: #ee4634;
+	color: #fff;
+	border-radius: 50px;
+	transition: all 0.5s;
+	&:hover {
+		background-color: #d94130;
+		cursor: pointer;
+	}
+}
+
+.likes__number {
+	padding: 0 0 0 10px;
+}
+
+.heading__slide {
+    font-size: 21px;
+}
+
+.text__slide {
+	line-height: 1.5;
+}
+
+.comments__section {
+	background-color: #f6f6f6;
+	padding: 20px;
+	height: 190px;
+}
+
+.comments__head {
+
+}
+
+.comments__header {
+	font-size: 16px;
+	margin: 0;
+}
+ 
+.collapse__btn {
+
+}
+
+.comments__body{ 
+	padding:10px 0 20px 50px;
+	display:inline-block;
+	position: relative;
+}
+
+.comments__userpic {
+  float: left;
+}
+
+.comments__username {
+	position: absolute;
+    top: 5px;
+    left: 120px;
+	margin: 0;
+}
+
+.comments__form {
+   padding: 25px 0 0 70px;
+}
+
+.comments__textarea {
+	width: 520px;
+	height: 40px;
+	border-radius: 50px;
+	border: 1px solid #d8d6d6;
+	margin: 0 0 10px 0;
+	padding: 0 0 0 20px;
+	outline: none;
+
+}
+
+.comments__addbtn {
+	width: 100px;
+	height: 40px;
+	border: 1px solid #28bbf0;
+	border-radius: 50px;
+	color: #28bbf0;
+	background-color: #f6f6f6;
+	transition: all 0.5s;
+	&:hover {
+		cursor: pointer;
+		color: #fff;
+		background-color: #28bbf0;
+	}
+}
+
+//--------ALBUM UPLOAD MODAL-------//
+
+.album__upload__close {
+	display: inline;
+	margin-left: 450px;
+}
+
+.album__upload__body {
+	background-color: #fff;
+	padding: 40px 0 0 50px;
+}
+
+.album__upload__name__label {
+	padding: 0 30px 0 0;
+}
+
+.album__upload__name {
+	width: 520px;
+	height: 40px;
+	padding: 0 0 0 30px;
+	margin: 0 0 20px 0;
+	border-radius: 50px;
+	border: 1px solid #d8d6d6;
+	outline: none;
+}
+
+.album__upload__description__label {
+	padding: 0 30px 0 0;
+}
+
+.album__upload__description {
+	width: 520px;
+	height: 120px;
+	border-radius: 20px;
+	border: 1px solid #d8d6d6;
+	outline-color: #36c0f1;
+	padding: 0px 0 80px 28px;
+	margin: 0 0 20px 0;
+}
+
+.album__upload__body__bottom__part{
+	height: 100px;
+}
+.album__upload__preview {
+	height: 50px;
+	width: 50px;
+	border-radius: 50%;
+	margin:0 20px 30px 25px;
+	float: left;
+}
+
+.album__upload__submit {
+	float: left;
+	width: 170px;
+	height: 43px;
+	border-radius: 50px;
+	border: 1px solid #28bbf0;
+	color: #28bbf0;
+	background-color: #fff;
+	margin: 4px 20px 0 0;
+	transition: all 0.5s;
+  padding: 10px;
+  text-align: center;
+	&:hover {
+		color:#fff;
+		background-color: #28bbf0;
+		cursor: pointer;
+	}
+
+}
+
+.album__upload__warning {
+	margin: 0;
+	width: 200px;
+	height: 33px;
+	float: left;
+}
+
+//------------ALBUM EDIT MODAL-------//
+.album__edit__close {
+	display: inline;
+	margin-left: 400px;
+}
+
+.album__edit__body {
+	background-color: #fff;
+	padding: 40px 20px 30px 78px;
+}
+
+.album__edit__name__label {
+	margin: 0 0 0 30px;
+}
+
+.album__edit__name__input {
+	width: 250px;
+	height: 40px;
+	margin: 0 0 20px 10px;
+	padding: 0 0 0 20px;
+	border-radius: 50px;
+	border: 1px solid #d8d6d6;
+	outline: none;
+}
+
+.album__edit__about__input {
+	width: 515px;
+	height: 120px;
+	border-radius: 20px;
+	border: 1px solid #d8d6d6;
+	margin: 0 0 15px 10px;
+	padding: 0 0 80px 20px;
+}
+
+.album__edit__photo__upload {
+	height: 65px;
+}
+
+.album__edit__img {
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    margin: 0 20px 10px 25px;
+    float: left;
+}
+
+.album__edit__photo__input {
+    float: left;
+    width: 194px;
+    height: 44px;
+    border-radius: 50px;
+    border: 1px solid #28bbf0;
+    color: #28bbf0;
+    background-color: #fff;
+    margin: 4px 20px 0 0;
+    transition: all 0.5s;
+    &:hover {
+		color:#fff;
+		background-color: #28bbf0;
+		cursor: pointer;
+	}
+}
+
+.album__edit__photo__warning {
+ width: 217px;
+ height: 40px;
+ margin: 7px 0 0 0;
+ float: left;
+}
+
+.album__edit__bg__upload{
+	height: 50px;
+}
+
+.album__edit__bg {
+	 height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    margin: 0 20px 30px 25px;
+    float: left;
+
+}
+
+.album__edit__bg__input {
+	float: left;
+    width: 140px;
+    height: 44px;
+    border-radius: 50px;
+    border: 1px solid #28bbf0;
+    color: #28bbf0;
+    background-color: #fff;
+    margin: 4px 20px 0 0;
+    transition: all 0.5s;
+    &:hover {
+		color:#fff;
+		background-color: #28bbf0;
+		cursor: pointer;
+	}
+}
+
+.album__edit__bg__warning {
+	width: 218px;
+	height: 40px;
+	margin: 7px 0 0 0;
+	float: left;
+}
+
+.album__edit__soc__section {
+	background-color: #fff;
+	height: 266px;
+	padding: 40px 283px 0 50px;
+	border-top: 1px solid #d8d6d6;
+}
+
+.soc__label{
+ margin: 0 17px 0 0;
+ text-align: right;
+ width: 30px;
+}
+.album__edit__vk.soc__label {
+	margin: 0 13px 0 0;
+}
+
+.album__edit__email.soc__label {
+	margin: 0 20px 0 30px;
+}
+
+.album__edit__twitter.soc__label {
+	margin: 0 20px 0 20px;
+}
+
+.soc__input {
+	width: 250px;
+	height: 40px;
+	border: 1px solid #d8d6d6;
+	border-radius: 50px;
+	padding: 0 0 0 20px;
+	margin: 0 0 10px 0;
+	outline: none;
+}
+
+//-------PHOTO DELETE MODAL--------//
+.photo__delete__close {
+	display: inline;
+    margin-left: 343px;
+}
+
+.photo__delete__body {
+	background-color: #fff;
+	height: 155px;
+	width: 100%;
+}
+
+.photo__delete__body__header {
+	margin: 0;
+	text-align: center;
+	padding: 40px 0 40px 0;
+}
+
+.photo__delete__confirm {
+	margin: 0 20px 0 240px;
+	text-align: center;
+	padding: 15px 25px;
+	color: #000;
+	display: inline;
+	border-radius: 20px;
+	transition: all 0.5s;
+	&:hover {
+		background-color: #ee4634;
+		color: #fff;
+		cursor: pointer;
+	}
+}
+
+.photo__delete__cancel {
+	text-align: center;
+	color: #000;
+	display: inline;
+	&:hover {
+		cursor: pointer;
+	}
+}
+
+//---------PHOTO UPLOAD MODAL--------//
+.photo__edit__close {
+	display: inline;
+	margin-left: 343px;
+}
+
+.photo__edit__body {
+	background-color: #fff;
+	padding: 40px 0 0 50px;
+}
+
+.photo__edit__form {
+	
+}
+
+.photo__edit__name__label {
+	padding: 0 30px 0 0;
+}
+
+.photo__edit__name {
+	width: 520px;
+	height: 40px;
+	padding: 0 0 0 30px;
+	margin: 0 0 20px 0;
+	border-radius: 50px;
+	border: 1px solid #d8d6d6;
+	outline: none;
+}
+
+.photo__edit__description__label {
+	padding: 0 30px 0 0;
+}
+
+.photo__edit__description {
+	width: 520px;
+	height: 120px;
+	border-radius: 20px;
+	border: 1px solid #d8d6d6;
+	outline-color: #36c0f1;
+	padding: 0px 0 80px 28px;
+	margin: 0 0 20px 0;
+}
+
+.photo__edit__body__bottom__part{
+	height: 100px;
+}
+.photo__edit__preview {
+	height: 50px;
+	width: 50px;
+	border-radius: 50%;
+	margin:0 20px 30px 25px;
+	float: left;
+}
+
+.photo__edit__submit {
+	float: left;
+	width: 170px;
+	height: 43px;
+	border-radius: 50px;
+	border: 1px solid #28bbf0;
+	color: #28bbf0;
+	background-color: #fff;
+	margin: 4px 20px 0 0;
+	transition: all 0.5s;
+	&:hover {
+		color:#fff;
+		background-color: #28bbf0;
+		cursor: pointer;
+	}
+
+}
+
+.photo__edit__warning {
+	margin: 0;
+	width: 200px;
+	height: 33px;
+	float: left;
+}
+
+//---------PHOTO UPLOAD MODAL--------------//
+.photo__upload__close {
+	    display: inline;
+    margin-left: 400px;
+}
+
+.photo__upload__body {
+	background-color: #fff;
+	padding: 40px 20px 0 20px;
+	width: 100%;
+	height: 460px;
+}
+
+.photo__upload__text {
+	display: inline;
+	margin: 0 20px 0 0;
+}
+
+.photo__upload__name {
+	display: inline;
+
+}
+
+.photo__upload__file__block {
+	width: 640px;
+    height: 333px;
+    background-color: #f9f9f9;
+    border: 3px dashed #f1f1f1;
+    border-radius: 30px;
+    position: relative;
+    overflow: hidden;
+    margin: 40px 0 0 0;
+}
+
+.photo__upload__file__img {
+     position: absolute;
+    top: 37%;
+    left: 46%;
+}
+
+.photo__upload__file__label {
+
+}
+
+.photo__upload__file__span {
+	display: block;
+	cursor: pointer;
+	position: absolute;
+    top: 50%;
+    left: 41%;
+}
+
+.photo__upload__file__input {
+  opacity: 0;
+  top: 0;
+      left: 0;
+    right: 0;
+    bottom: 0;
+  position: absolute;
+}
