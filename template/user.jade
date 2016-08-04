@@ -14,13 +14,13 @@ body
         img.album__upload__close(src="/icons/close.svg")
       .album__upload__body
         form.album__upload__form(action="/addAlbum" method="POST" enctype="multipart/form-data" id="addAlbomForm")
-          label.album__upload__name__label(for="upload-name") Название
-          input.album__upload__name(type="text",name="upload-name",placeholder="Мой альбом")
-          label.album__upload__description__label(for="upload-description") Описание
-          input.album__upload__description(type="text",name="upload-description")
+          label.album__upload__name__label(for="uploadName") Название
+          input.album__upload__name(type="text",name="uploadName",placeholder="Мой альбом")
+          label.album__upload__description__label(for="uploadDescription") Описание
+          input.album__upload__description(type="text",name="uploadDescription")
           .album__upload__body__bottom__part
-            img.album__upload__preview(src="/img/photo_item.jpg")
-            input(type="file" id="albumUploadThumb")
+            img.album__upload__preview(src="/img/no_album_cover.jpg")
+            input(type="file" id="albumUploadThumb" name="albumUploadThumb")
             label.album__upload__submit(for="albumUploadThumb") Загрузить обложку
             p.album__upload__warning (файл должен быть размером не более 1024 КБ)
       .album__upload.__modal__footer
@@ -121,25 +121,29 @@ body
           .photo-items
             each val in photos
               article.photo-item.photo-item--user
-                a(href="#").photo-item__photo
+                - var photoLink = "/media/" + val.userId + "/albums/" + val.albomId + "/" + val._id + ".jpg";
+                a(href="#" style="background-image: url(#{photoLink});").photo-item__photo
                 .photo-item__info
-                  a(href="#").photo-item__user
-                    img(src="/img/mini_avatar.jpg").photo-item__user-photo
+                  - var userLink = "/user/" + val.userId;
+                  - var userAvatar = "/media/" + val.userId + "/avatar/avatar.jpg";
+                  - var albumLink = "/album/" + val.albomId;
+                  a(href="#{userLink}").photo-item__user
+                    img(src="#{userAvatar}").photo-item__user-photo
                   .photo-item__descr
-                    a(href="#").photo-item__title Путешествие на лодке по озеру
+                    a(href="#{albumLink}").photo-item__title= val.title
                     .photo-item__social
                       .photo-item__comments
                         .photo-item__comments-icon
                           include ../public/icons/comments.svg
-                        .photo-item__comments-text 9
+                        .photo-item__comments-text 0
                       .photo-item__likes
                         .photo-item__likes-icon
                           include ../public/icons/like.svg
-                        .photo-item__likes-text 15
-                a(href="#").photo-item__album
+                        .photo-item__likes-text 0
+                a(href="#{albumLink}").photo-item__album
                   .photo-item__album-icon
                     include ../public/icons/album.svg
-                  .photo-item__album-text Прогулки по воде
+                  .photo-item__album-text= val.albomName
           a(href="#").photo-loader Показать ещё
       .my-alboms
         .container
@@ -149,12 +153,16 @@ body
               .photo-btn__icon
                 include ../public/icons/add.svg
             each val in alboms
+              - var userLink = "/user/" + val.userId;
+              - var userAvatar = "/media/" + val.userId + "/avatar/avatar.jpg";
+              - var albumLink = "/album/" + val._id;
+              - var albumThumbLink = "/media/" + val.userId + "/albums/" + val._id + "/" + val.thumb + ".jpg";
               article.album-item.album-item--user
-                a(href="#").album-item__photo
+                a(href="#{albumLink}" style="background-image: url(#{albumThumbLink});").album-item__photo
                 .album-item__info
                   button#albumItemEdit.album-item__edit
                     include ../public/icons/edit.svg
-                  a(href="#").album-item__title Поход в горы
+                  a(href="#").album-item__title= val.title
     footer.user-footer(style="background-image: url('#{userInfo.bgLink}');")
       .container
         .user-footer__promo.

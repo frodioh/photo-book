@@ -71,13 +71,13 @@ var PhotosSchema = new Schema({
     type: String,
     default: ""
   },
-  likes: [ObjectId],
-  comments: [
-    {
-      userId: ObjectId,
-      text: String
-    }
-  ],
+//  likes: [ObjectId],
+//  comments: [
+//    {
+//      userId: ObjectId,
+//      text: String
+//    }
+//  ],
   link: String,
   date: Date
 });

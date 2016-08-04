@@ -93,6 +93,7 @@ app.post('/register', function(req, res) {
   });
 });
 
+//Обновление информации о пользователе
 app.post('/profile', function(req, res) {
   var session = req.session;
   var form = new multiparty.Form();
@@ -153,63 +154,105 @@ app.post('/profile', function(req, res) {
 });
 
 //Добавление альбома
-app.post('/profile', function(req, res) {
+app.post('/addAlbum', function(req, res) {
   var session = req.session;
   var form = new multiparty.Form();
   form.parse(req, function(err, fields, files) {
-    var user = {
-      name: fields.userEditName,
-      info: fields.userEditCaption,
-      photoLink: '/media/' + session.userId + '/avatar/avatar' + path.parse(files.userEditAvatar[0].path).ext,
-      bgLink: '/media/' + session.userId + '/bg/bg' + path.parse(files.userEditBg[0].path).ext,
-      social: {
-        vk: fields.userEditVk,
-        fb: fields.userEditFb,
-        twitter: fields.userEditTwitter,
-        googlePlus: fields.userEditGoogle,
-        email: fields.userEditEmail,
-      }
+    var photo = {
+      _id: ObjectId()
     };
-    var newFilePathAvatar = './public/media/' + session.userId + '/avatar/avatar' + path.parse(files.userEditAvatar[0].path).ext;
-    var newFilePathBg = './public/media/' + session.userId + '/bg/bg' + path.parse(files.userEditBg[0].path).ext;
+    var album = {
+      _id: ObjectId(),
+      userId: session.userId,
+      title: fields.uploadName,
+      description: fields.uploadDescription,
+      date: new Date(),
+      photos: [photo._id],
+      thumb: photo._id
+    };
+    photo.albomId = album._id;
+    photo.albomName = album.title;
+    photo.userId = session.userId;
+    photo.link = "/media/" + session.userId + "/albums/" + album._id + "/" + photo._id + path.parse(files.albumUploadThumb[0].path).ext;
+    photo.date = new Date();
+    //Создание директории альбома
+    fs.mkdirSync(path.resolve("./public/media/" + session.userId + "/albums/" + album._id));
+    var newFilePathPhoto = "./public/media/" + session.userId + "/albums/" + album._id + "/" + photo._id + path.parse(files.albumUploadThumb[0].path).ext;
     try {
-      fs.writeFileSync(path.resolve(newFilePathAvatar),fs.readFileSync(files.userEditAvatar[0].path));
-      fs.writeFileSync(path.resolve(newFilePathBg),fs.readFileSync(files.userEditBg[0].path));
+      fs.writeFileSync(path.resolve(newFilePathPhoto),fs.readFileSync(files.albumUploadThumb[0].path));
     } catch (err) {
       console.log("файл не загрузился");
-      console.log(files.userEditBg[0].path);
-      console.log(files.userEditAvatar[0].path);
       console.log(err);
-      console.log(newFilePathBg);
-      console.log(newFilePathAvatar);
     }
-    User.findOne({_id: new ObjectId(req.session.userId)}, function (err, doc){
-      doc.name = user.name;
-      doc.info = user.info;
-      console.log(files.userEditAvatar[0].path);
-      console.log(files.userEditBg[0].path);
-      console.log(files.userEditBg[0]);
-      console.log(files.userEditAvatar[0]);
-      if (files.userEditAvatar[0].originalFilename) {
-        doc.photoLink = user.photoLink;
+    //Создание документов по моделям
+    photo = new Photo(photo);
+    album = new Albom(album);
+    photo.save(function(err, doc) {
+      if(doc) {
+        album.save(function(err, doc) {
+          if(doc) {
+            var valid = {
+              "isValid": true
+            };
+            valid = JSON.stringify(valid);
+            res.setHeader('Content-Type', 'application/json; charset=utf8;');
+            res.end(valid);
+          } else {
+            var valid = {
+              "isValid": false
+            };
+            valid = JSON.stringify(valid);
+            res.setHeader('Content-Type', 'application/json; charset=utf8;');
+            res.end(valid);
+            console.log(err);
+          }
+        });
+      } else {
+        console.log(err);
       }
-      if (files.userEditBg[0].originalFilename) {
-        doc.bgLink = user.bgLink;
+    });
+    
+  });
+});
+
+//Обновление информации на главной странице
+app.post('/userUpdate', function(req, res) {
+  var session = req.session;
+  var query = {_id: new ObjectId(req.session.userId)};
+  //Запрос к базе
+  User.findOne(query, function(err, user) {
+    var information = {
+      userInfo: user
+    };
+    Albom.find({userId: user._id}, function(err, alboms) {
+      if(alboms) {
+        information.alboms = alboms;
+        Photo.find({}).sort({date: 'descending'}).limit(6).exec(function(err, photos) {
+          if(photos) {
+            information.photos = photos;
+            res.json(information);
+            console.log(information);
+          } else {
+            console.log(err);
+            console.log(information);
+            res.json(information);
+          }
+        });
+      } else {
+        console.log(err);
+        console.log(information);
+        res.json(information);
       }
-      doc.social.vk = user.social.vk;
-      doc.social.fb = user.social.fb;
-      doc.social.twitter = user.social.twitter;
-      doc.social.googlePlus = user.social.googlePlus;
-      doc.social.email = user.social.email;
-      doc.save();
-      var valid = {
-            "isValid": true
-          };
-      valid = JSON.stringify(valid);
-      res.setHeader('Content-Type', 'application/json; charset=utf8;');
-      res.end(valid);
     });
   });
+});
+
+//Удаление сессии
+app.post('/deleteSession', function(req, res) {
+  req.session.userId = null;
+  res.json({
+    "isValid": true
+  })
 });
 
 //Страница пользователя
